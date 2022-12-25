@@ -2,21 +2,21 @@
     "development": {
       "username": "fitness_1",
       "password": "fitness123",
-      "database": "fitness-tracker",
+      "database": "fitness_tracker",
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
       "dialect": "postgres"
     },
     "test": {
       "username": "fitness_1",
       "password": "fitness123",
-      "database": "fitness-tracker",
+      "database": "fitness_tracker",
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
       "dialect": "postgres"
     },
     "production": {
       "username": "fitness_1",
       "password": "fitness123",
-      "database": "fitness-tracker",
+      "database": "fitness_tracker",
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
       "dialect": "postgres"
     }
