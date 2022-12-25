@@ -1,4 +1,4 @@
-# Mile-Stone-3
+# Fitness Tracker 
 
 ## Inspiration
 
@@ -25,12 +25,12 @@ The interface will be resizable to view on different size screens
 |Get | /* | 404 Page Not Found|
 
 ## Database Structure
-Users 1:n with UserData on user_id
-Users 1:n with Workouts on user_id
-Users 1:n with Meals on user_id
-Workouts 
+Users 1:n with UserData on user_id <br>
+Users 1:n with Workouts on user_id <br>
+Users 1:n with Meals on user_id<br>
+Execises <br>
 
 ## Contributors
-[Alex Aguirre](https://github.com/AlexAguirre70)
-[Gustavo Martinez ](https://github.com/Gustavo0623)
-[Matthew Herrera](https://github.com/Machew115)
+[Alex Aguirre](https://github.com/AlexAguirre70) <br>
+[Gustavo Martinez ](https://github.com/Gustavo0623) <br>
+[Matthew Herrera](https://github.com/Machew115) <br>
