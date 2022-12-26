@@ -28,7 +28,7 @@ The interface will be resizable to view on different size screens
 Users 1:n with UserData on user_id <br>
 Users 1:n with Workouts on user_id <br>
 Users 1:n with Meals on user_id<br>
-Execises <br>
+Exercises <br>
 
 ## Contributors
 [Alex Aguirre](https://github.com/AlexAguirre70) <br>
