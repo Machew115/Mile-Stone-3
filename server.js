@@ -21,13 +21,16 @@ connection will be on the backen */
 // }
 
 
-// ROOT
+//ROOT
 app.get('/', (req, res) => {
     res.status(200).json({
-        message: 'Welcome to the Tour API'
+        message: 'Welcome to the Fitness Tracker API'
     })
 })
 
+//Controllers
+const authController = require('./backend/controllers/authentication')
+app.use('/authentication',authController)
 
 //Listen
 app.listen(process.env.PORT,()=>{
