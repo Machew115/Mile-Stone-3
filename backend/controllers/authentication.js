@@ -1,6 +1,6 @@
 //Dependencies
 const auth = require ('express').Router()
-const db = require('../models/')
+const db = require('../models')
 const {Users} = db
 const {Op} =require('sequelize')
 
