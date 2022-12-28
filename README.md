@@ -3,11 +3,11 @@
 ## Inspiration
 
 ## Details
-User will be able to register and login into the Fitness Tracker
-Once logged in they will be able to update the own personal data to track their progress on their weight and measurements
-They will also able to log their workouts and meals to track their calorie consumption
-They will be able to select different exercises to target specific muscle groups
-The interface will be resizable to view on different size screens
+User will be able to register and login into the Fitness Tracker. <br/>
+Once logged in they will be able to update the own personal data to track their progress on their weight and measurements. <br/>
+They will also able to log their workouts and meals to track their calorie consumption.<br/>
+They will be able to select different exercises to target specific muscle groups.<br/>
+The interface will be resizable to view on different size screens. <br/>
 
 ## Technology
 * React - Frontend UI development
@@ -15,11 +15,20 @@ The interface will be resizable to view on different size screens
 * CSS - Styling
 * Sequelize - ORM to Generate and Migarte Models to Database
 * Postgres on AWS RDS - Database
+* RapidAPI to access exercises
 * AWS- Web Deployment
 * JWT Token Authorization - Security to authenticate user login
 * BCrypt - Security to Hash Password
 
-## API
+## API - Controllers
+
+### Register and Login Authentication
+| Method | Path | Purpose |
+|--------|------|---------|
+|Get | / | Authenticate User|
+|Get | /* | 404 Page Not Found|
+
+### User Data , Workout and Meal Logs
 | Method | Path | Purpose |
 |--------|------|---------|
 |Get | /* | 404 Page Not Found|
