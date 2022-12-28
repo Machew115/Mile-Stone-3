@@ -1,23 +1,23 @@
 {
-    "development": {
-      "username": "",
-      "password": "",
-      "database": "",
-      "host": "",
-      "dialect": ""
-    },
-    "test": {
-        "username": "",
-        "password": "",
-        "database": "",
-        "host": "",
-        "dialect": ""
-    },
-    "production": {
-        "username": "",
-        "password": "",
-        "database": "",
-        "host": "",
-        "dialect": ""
-    }
+  "development": {
+    "username": "fitness_2",
+    "password": "fitness123",
+    "database": "fitness_tracker",
+    "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "fitness_2",
+    "password": "fitness123",
+    "database": "fitness_tracker",
+    "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "fitness_2",
+    "password": "fitness123",
+    "database": "fitness_tracker",
+    "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
+    "dialect": "postgres"
   }
+}
