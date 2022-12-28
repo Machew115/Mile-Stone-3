@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express()
 const {Sequelize} = require('sequelize')
 
@@ -6,6 +7,10 @@ const {Sequelize} = require('sequelize')
 require('dotenv').config()
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}))
 
 /* This code was used to test the connection. 
 connection will be on the backen */

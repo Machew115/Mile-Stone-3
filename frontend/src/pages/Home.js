@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
-// useContext to be added later to get the user info after login***
+import React, { useEffect, useContext } from 'react';
+import { CurrentUser } from '../context/CurrentUser'; // import the CurrentUser
 
 const Home = () => {
-    const [user, setUser] = useState(null);
+    const { currentUser } = useContext(CurrentUser); // get the currentUser from the context
 
     useEffect(() => {
-        const fetchUser = async () => {
-        const response = await fetch('/'); // make a GET request to the server(to be updated with server info) to fetch user
-        const user = await response.json();
-        setUser(user);
-        }
-        fetchUser();
-    }, []); // only execute the fetch request once when the component mounts
+        console.log(currentUser); // access the currentUser in the useEffect hook
+    }, [currentUser]); // only execute the useEffect hook when the currentUser changes
 
     return (
         <div>
-        {user ? (
+        {currentUser ? (
             <div>
-            <h1>Welcome, {user.name}!</h1>
+            <h1>Welcome, {currentUser.user_f_name}!</h1>
             </div>
         ) : (
             <p>Loading user information...</p>
         )}
         </div>
     );
-}
+};
 
 export default Home;
+
