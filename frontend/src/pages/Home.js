@@ -12,7 +12,7 @@ const Home = () => {
         <div>
         {currentUser ? (
             <div>
-            <h1>Welcome, {currentUser.name}!</h1>
+            <h1>Welcome, {currentUser.user_f_name}!</h1>
             </div>
         ) : (
             <p>Loading user information...</p>
