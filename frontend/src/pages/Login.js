@@ -1,52 +1,59 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
+import { CurrentUser } from '../context/CurrentUser'
 
 function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     // Declare a state variable for the checkbox and set its initial value to false
     const [showPassword, setShowPassword] = useState(false);
+    const { setCurrentUser } = useContext(CurrentUser);
+
+
     const handleSubmit = useCallback(async (event) => {
         event.preventDefault();
         try {
-        // send a request to the server to verify the username and password
-        const response = await fetch('/', { // to be changed to server route.
+        // send a request to the server to verify the email and password
+        const response = await fetch('http://localhost:5000/authentication', { // to be changed to server route.
             method: 'POST',
+            credentials: 'include',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
         });
 
-        if (response.ok) {
+        if (response.status === 200) {
+            const user = await response.json();
+            setCurrentUser(user);
             // navigate to the home page if login was successful
             navigate('/');
         } else {
+            console.log(response) // test
             // display an error message if login failed
-            setError('Invalid username or password');
+            setError('Invalid email or password');
         }
         } catch (error) {
         setError(error.message);
         }
-    }, [username, password, navigate]);
+    }, [email, password, navigate, setCurrentUser]);
 
     useEffect(() => {
-        // clear the error message when the username or password changes
+        // clear the error message when the email or password changes
         setError(null);
-    }, [username, password]);
+    }, [email, password]);
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
         {error && <p>{error}</p>}
         <label>
             Username:
             <input
             type="text"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             />
         </label>
         <br />
@@ -65,7 +72,7 @@ function Login() {
         <input type="checkbox" checked={showPassword} onChange={e => setShowPassword(e.target.checked)} />
         Show Password
         
-        <button type="submit">Log in</button>
+        <button type="submit" onClick={handleSubmit}>Log in</button>
         </form>
     );
 }

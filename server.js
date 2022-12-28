@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express()
 const {Sequelize} = require('sequelize')
+const defineCurrentUser = require('./backend/middleware/defineCurrentUser')
 
 //middleware
 require('dotenv').config()
@@ -11,6 +12,7 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }))
+app.use(defineCurrentUser)
 
 /* This code was used to test the connection. 
 connection will be on the backen */
