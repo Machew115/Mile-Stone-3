@@ -23,7 +23,7 @@ function Signup() {
             },
             body:JSON.stringify(user)
         })
-        navigate.push(`/`);
+        navigate(`/`);
     }
       
     return (
