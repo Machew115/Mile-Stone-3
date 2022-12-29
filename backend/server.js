@@ -1,17 +1,18 @@
+require('dotenv').config()
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express()
 const {Sequelize} = require('sequelize')
-const defineCurrentUser = require('./backend/middleware/defineCurrentUser')
+const defineCurrentUser = require('./middleware/defineCurrentUser');
+
 
 //middleware
-require('dotenv').config()
+
+app.use(cors())
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
-}))
 app.use(defineCurrentUser)
 
 /* This code was used to test the connection. 
@@ -28,16 +29,9 @@ connection will be on the backen */
 // }
 
 
-//ROOT
-app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'Welcome to the Fitness Tracker API'
-    })
-})
-
 //Controllers
-const authController = require('./backend/controllers/authentication')
-app.use('/authentication',authController)
+app.use('/authentication',require('./controllers/authentication'))
+app.use('/users',require('./controllers/users'))
 
 //Listen
 app.listen(process.env.PORT,()=>{
