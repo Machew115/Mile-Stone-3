@@ -1,16 +1,23 @@
+require('dotenv').config()
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express()
 const {Sequelize} = require('sequelize')
+const defineCurrentUser = require('./middleware/defineCurrentUser');
+
 
 //middleware
-require('dotenv').config()
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+
 app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT",],
+    credentials: true,
 }))
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(defineCurrentUser)
 
 /* This code was used to test the connection. 
 connection will be on the backen */
@@ -25,21 +32,10 @@ connection will be on the backen */
 //     console.log(`unable to connect to PG: ${err}`)
 // }
 
-app.use(express.urlencoded({ extended: true }))
-
-//ROOT
-app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'Welcome to the Fitness Tracker API'
-    })
-})
 
 //Controllers
-const authController = require('./backend/controllers/authentication')
-app.use('/authentication', authController)
-
-const signupController = require('./backend/controllers/user')
-app.use('/signup', signupController)
+app.use('/authentication',require('./controllers/authentication'))
+app.use('/users',require('./controllers/users'))
 
 //Listen
 app.listen(process.env.PORT,()=>{
