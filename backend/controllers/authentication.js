@@ -1,10 +1,10 @@
 //Dependencies
 const auth = require ('express').Router()
 const db = require('../models')
-const {Users} = db
-const {Op} =require('sequelize')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const {Users} = db
+
 
 auth.post('/', async (req, res) => {
     
@@ -32,22 +32,22 @@ auth.post('/', async (req, res) => {
 
 auth.get('/profile', async (req, res) => {
     // Send the currentUser property of the request object as the response
-    res.json(req.currentUser)
+      res.json(req.currentUser)
 })
 
 
 // Commented out bottom code to test my code. saved in case we need it later
 
-//auth.get('/',async (req,res)=>{
+// auth.get('/',async (req,res)=>{
 //    //res.send('Hello we hit the route')
 //    try {
 //        const foundUsers = await Users.findAll()
-//        
+       
 //        res.status(200).json(foundUsers)
 //    } catch (error) {
 //        res.status(500).json(error)
 //    }
-//})
+// })
     
 //export module
 module.exports= auth
