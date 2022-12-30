@@ -33,6 +33,8 @@ connection will be on the backen */
 app.options('*',cors())
 app.use('/authentication',require('./controllers/authentication'))
 app.use('/users',require('./controllers/users'))
+app.use('/meals',require('./controllers/meals'))
+app.use('/workouts',require('./controllers/workouts'))
 
 //Listen
 app.listen(process.env.PORT,()=>{

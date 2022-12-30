@@ -2,7 +2,7 @@ const userRouter = require('express').Router()
 const db = require('../models')
 const bcrypt =require('bcrypt')
 
-const {Users} = db
+const {Users, UserData} = db
 
 userRouter.post('/', async(req,res)=>{
    let userCheck= await Users.findOne({
