@@ -30,6 +30,7 @@ connection will be on the backen */
 
 
 //Controllers
+app.options('*',cors())
 app.use('/authentication',require('./controllers/authentication'))
 app.use('/users',require('./controllers/users'))
 
