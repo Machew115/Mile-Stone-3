@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { CurrentUser } from '../context/CurrentUser'; // import the CurrentUser
+import Navbar from '../components/Navbar';
 
 const Home = () => {
     const { currentUser } = useContext(CurrentUser); // get the currentUser from the context
@@ -10,13 +11,14 @@ const Home = () => {
 
     return (
         <div>
-        {currentUser ? (
-            <div>
-            <h1>Welcome, {currentUser.user_f_name}!</h1>
-            </div>
-        ) : (
-            <p>Loading user information...</p>
-        )}
+            <Navbar/>
+            {currentUser ? (
+                <div>
+                    <h1>Welcome, {currentUser.user_f_name}!</h1>
+                </div>
+            ) : (
+                <p>Loading user information...</p>
+            )}
         </div>
     );
 };

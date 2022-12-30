@@ -13,6 +13,20 @@ function Login() {
     // Declare a state variable for the checkbox and set its initial value to false
     const [showPassword, setShowPassword] = useState(false);   
 
+    useEffect(() => {
+        const input = document.querySelector('input');
+
+        input.addEventListener('focus', () => {
+        input.classList.add('focused');
+        });
+
+        input.addEventListener('blur', () => {
+        input.classList.remove('focused');
+        });
+
+    }, []);
+
+
     async function handleSubmit(e) {
         e.preventDefault();
                 // send a request to the server to verify the email and password
@@ -48,6 +62,7 @@ function Login() {
             <input
             type="text"
             required
+            placeholder='email'
             name = 'user_email'
             id='user_email'
             value={credentials.user_email}
@@ -59,6 +74,7 @@ function Login() {
         <input 
             type={showPassword ? "text" : "password"} 
             required
+            placeholder='password'
             name="user_password"
             id='user_password' 
             value={credentials.user_password}

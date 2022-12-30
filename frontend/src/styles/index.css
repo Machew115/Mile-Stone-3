@@ -1,0 +1,14 @@
+#user-menu {
+  display: flex;
+  justify-content: space-around;
+  width: 15%;
+}
+#user-menu #dropdown {
+  width: 40px;
+  overflow: hidden;
+}
+
+#heart {
+  height: 40px;
+  width: auto;
+}/*# sourceMappingURL=index.css.map */
