@@ -35,7 +35,7 @@ function Signup() {
       
     return (
         <form onSubmit={handleSubmit}>
-         {error && <p>{error}  <a href="/login"><button> Login</button></a></p>}   
+         {error && <div>{error}  <a href="/login"><button type='button'> Login</button></a></div>}   
         <label htmlFor="user_f_name">First Name:</label>
         <input
             type="text"
