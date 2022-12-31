@@ -11,7 +11,6 @@ async function defineCurrentUser(req, res, next){
         const [ method, token ] = req.headers.authorization.split(' ')
         // Check if the method is 'Bearer'
         if(method == 'Bearer'){
-           console.log('this is the token: ', token)
             // Decode the token using the JWT secret
             const result = await jwt.decode(process.env.JWT_SECRET, token)
             // Extract the user ID from the token payload

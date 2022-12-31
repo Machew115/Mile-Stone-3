@@ -22,28 +22,26 @@ auth.post('/', async (req, res) => {
         })
     } else {
         // If the user exists and the passwords match, encode a JWT with the user's ID as the payload and send it as the response
-        const result = await jwt.encode(process.env.JWT_SECRET, { id: user.user_Id })
+        const result = await jwt.encode(process.env.JWT_SECRET, {id:user.user_id})
         res.json({ user: user, token:result.value })       
     }
 })
 
 
 auth.get('/profile', async (req, res) => {
-    console.log(req.body)
     try{
         const [authenticationMethod,token] = req.headers.authorization.split(' ')
         if (authenticationMethod == 'Bearer') {
             //Decode the JWT
             const result= await jwt.decode(process.env.JWT_SECRET,token)
-            
             //Get the logged in user's id from the payload
-            const{id}=result.value
-
-            //Find the user objecet using their id
+            const id=result.value.id
+            console.log(`this is the is : ${id} `)
+            //Find the user object using their id
             let user= await Users.findOne({
                 where: { user_id:id}
             })
-            res.json(req.currentUser)
+            res.json(user)
         }
     
     } catch{
