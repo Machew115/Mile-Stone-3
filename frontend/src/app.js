@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import CurrentUserProvider from './context/CurrentUser';
+import MealLog from './pages/MealLog';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route exact path='/' element={<Home/>}/>
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/signup' element={<Signup/>}/>
+        <Route exact path='/meals' element={<MealLog/>}/>
       </Routes>
     </CurrentUserProvider>
   );
