@@ -8,8 +8,11 @@ const defineCurrentUser = require('./middleware/defineCurrentUser');
 
 
 //middleware
-
-app.use(cors())
+var corsOptions ={
+    origin: "http://localhost:3000",
+    credentials: true
+}
+app.use(cors(corsOptions))
 app.use(express.static('public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())

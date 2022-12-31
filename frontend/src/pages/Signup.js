@@ -25,7 +25,7 @@ function Signup() {
             },
             body:JSON.stringify(user)
         })
-        const userCreated = await response.json()
+        await response.json()
         if(response.status===200){
             navigate(`/`);
         } else {
@@ -35,7 +35,7 @@ function Signup() {
       
     return (
         <form onSubmit={handleSubmit}>
-         {error && <div>{error}  <a href="/login"><button type='button'> Login</button></a></div>}   
+         {error && <div>{error}  <a href="/login"><button type='button'>Login</button></a></div>}   
         <label htmlFor="user_f_name">First Name:</label>
         <input
             type="text"
