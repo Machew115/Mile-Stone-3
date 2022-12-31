@@ -1,15 +1,45 @@
-#user-menu {
-    display: flex;
-    justify-content: space-around;
-    width: 15%;
+$font-size: 18px;
+$font-family: 'Open Sans', sans-serif;
+$font-weight: 400;
+$line-height: 1.5;
+$heading-font-size: 32px;
 
-    #dropdown {
-        width: 40px;
-        overflow: hidden;
+body {
+    line-height: $line-height;
+
+    #nav{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        #logo {
+
+            a {
+                font-size: $heading-font-size;
+                line-height: $line-height;
+            }
+        }
+
+        #user-menu {
+        display: flex;
+        justify-content: space-around;
+        width: 15%;
+
+            #dropdown {
+                width: 40px;
+                overflow: hidden;
+            }
+        }
     }
-}
 
-#heart {
-    height: 40px;
-    width: auto;
+    #greet {
+        font-size: $font-size;
+        text-align: center;
+    }
+
+    #heart {
+        height: 40px;
+        width: auto;
+    }
 }
