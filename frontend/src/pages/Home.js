@@ -1,21 +1,24 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { CurrentUser } from '../context/CurrentUser'; // import the CurrentUser
 import Navbar from '../components/Navbar';
 
 const Home = () => {
-    const { currentUser } = useContext(CurrentUser); // get the currentUser from the context
+    const { currentUser,setCurrentUser } = useContext(CurrentUser); // get the currentUser from the context
 
-    useEffect(() => {
-        console.log(currentUser); // access the currentUser in the useEffect hook
-    }, [currentUser]); // only execute the useEffect hook when the currentUser changes
-
+    function logout(){
+        localStorage.removeItem('token')
+        setCurrentUser(null)
+        window.location.reload(false)
+    }
     return (
         <div>
             <Navbar/>
             {currentUser ? (
                 <div>
                     <h1>Welcome, {currentUser.user_f_name}!</h1>
-                </div>
+                <h4>You are logged in</h4>
+            <button name='logout' onClick={logout}> Logout</button>
+            </div>
             ) : (
                 <p>Loading user information...</p>
             )}
