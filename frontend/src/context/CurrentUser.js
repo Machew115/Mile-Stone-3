@@ -14,8 +14,7 @@ function CurrentUserProvider({ children }){
                 }
             })
             
-            let user = await response.json()
-            console.log('This is what is returned to from GetLogged in user',user)
+            let user = await response.json()       
             setCurrentUser(user)
         }
         getLoggedInUser()
