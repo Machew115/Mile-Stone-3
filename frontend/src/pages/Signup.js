@@ -12,22 +12,30 @@ function Signup() {
         user_password: '',
     });
 
+    const[error, setError] =useState(null)
+
     async function handleSubmit(e){
         e.preventDefault();
         
         // Make a request to the server to create a new user
-            await fetch(`http://localhost:5000/users/`, {
+        const response = await fetch(`http://localhost:5000/users/`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
             },
             body:JSON.stringify(user)
         })
-        navigate(`/`);
+        await response.json()
+        if(response.status===200){
+            navigate(`/`);
+        } else {
+            setError('This email is already linked to an account, proceed to login')
+        }
     }
       
     return (
         <form onSubmit={handleSubmit}>
+         {error && <div>{error}  <a href="/login"><button type='button'>Login</button></a></div>}   
         <label htmlFor="user_f_name">First Name:</label>
         <input
             type="text"

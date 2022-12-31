@@ -2,14 +2,14 @@ const userRouter = require('express').Router()
 const db = require('../models')
 const bcrypt =require('bcrypt')
 
-const {Users} = db
+const {Users, UserData} = db
 
 userRouter.post('/', async(req,res)=>{
    let userCheck= await Users.findOne({
         where: {user_email:req.body.user_email}
    })
    if(userCheck){
-    res.send({
+    res.status(404).json({
         message: 'User already exists, please log in'
     })
    } else {
