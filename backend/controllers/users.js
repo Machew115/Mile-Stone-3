@@ -22,9 +22,13 @@ userRouter.post('/', async(req,res)=>{
    }    
 })
 
-userRouter.get('/'), async(req,res)=>{
-    const users=await Users.findAll()
-    res.json(users)
-}
+userRouter.get('/:id', async(req,res)=>{
+    let userid= Number(req.params.id)
+    console.log(userid)
+    const userDetails = await UserData.findOne({
+        where: {data_user_id:userid}
+    })
+    res.json(userDetails)
+})
 
 module.exports = userRouter
