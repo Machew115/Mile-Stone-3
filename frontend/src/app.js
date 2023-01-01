@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
-import UserData from './pages/UserData';
+import UserData from './components/UserData';
 import CurrentUserProvider from './context/CurrentUser';
 
 
@@ -16,7 +16,7 @@ function App() {
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/signup' element={<Signup/>}/>
         <Route exact path='/profile' element={<Profile/>}/>
-        <Route exact path='/userdata' element={<UserData />}/>
+        <Route exact path='/userdata' element={<UserData/>}/>
       </Routes>
     </CurrentUserProvider>
   );
