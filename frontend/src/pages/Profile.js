@@ -3,17 +3,7 @@ import { CurrentUser } from '../context/CurrentUser';
 import Login from './Login';
 
 const Profile = () => {
-    const {currentUser} =useContext(CurrentUser)
-    // const [userDetails, setUserDetails] = useState(null);
-    // useEffect(() => {
-    //      async function getUserDetails() {
-    //          const response = await fetch(`http://localhost:5000/users/${currentUser.user_id}`)
-    //          const dataDetails = await response.json()       
-    //          setUserDetails(dataDetails)
-    //      }
-    //      getUserDetails()
-    //  }, [currentUser.user_id,userDetails])
-    
+    const {currentUser} =useContext(CurrentUser)    
 
     return (
         <div>
