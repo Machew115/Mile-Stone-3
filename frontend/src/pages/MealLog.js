@@ -1,35 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../context/CurrentUser';
-import Navbar from '../components/Navbar';
-
 
 function MealLog() {
     // Declare state variables to store the selected date and the meals data
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
     const [meals, setMeals] = useState([]);
-    
 
-    const currentUser = useContext(CurrentUser)
-    
+    // user context
+    const {currentUser} = useContext(CurrentUser)
 
     useEffect(() => {
-        
+        if(currentUser) {
             // Fetch the meals data from the server and store it in the state
             async function fetchData() {
-                const response = await fetch(`http://localhost:5500/meals/user/${currentUser.user_id}/date/${selectedDate}`); // route subject to change depending on server route
+                console.log(currentUser)
+                const response = await fetch(`http://localhost:5000/meals?meal_user_id=${currentUser.user.user_id}&meal_date=${selectedDate}`); // route subject to change depending on server route
                 const data = await response.json();
                 setMeals(data);
+                console.log(data)
             }
             fetchData();
-    }, [selectedDate, currentUser.user_id]);
-  
+        }
+    }, [selectedDate, currentUser]);
+
     // Group the meals by date
     const groupedMeals = meals.reduce((acc, meal) => {
         
-        const date = meal.meal_date.toDateString();
-        
+        // use the toISOString method to convert the meal_date to a string in ISO format
+        const date = selectedDate;
+
         // create a date string from the meal's date
         if (!acc[date]) {
+            console.log('test')
             // if there is no key for the date in the accumulator object yet, create one
             acc[date] = [meal];
         } else {
@@ -40,14 +42,11 @@ function MealLog() {
         // return the updated accumulator object
         return acc;
     }, {});
-      
-  
     // Use the selected date to filter the data being displayed
-    const displayedMeals = groupedMeals[selectedDate.toDateString()] || [];
-  
+    const displayedMeals = groupedMeals[selectedDate] || [];
+
     return (
         <div>
-            <Navbar/>
             {/* Date picker to allow the user to select the date */}
             <input type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} />
             {/* display the meal entries */}
@@ -58,10 +57,13 @@ function MealLog() {
                 <p>Protein: {meal.protein}</p>
                 <p>Fat: {meal.fat}</p>
                 <p>Carbs: {meal.carbs}</p>
+                <p>Time: {selectedDate}</p>
             </div>
             ))}
         </div>
     );
 }
 
+
 export default MealLog;
+

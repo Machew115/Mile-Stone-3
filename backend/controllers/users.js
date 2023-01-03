@@ -24,9 +24,11 @@ userRouter.post('/', async(req,res)=>{
 
 userRouter.get('/:id', async(req,res)=>{
     let userid= Number(req.params.id)
+    console.log('This hit the User Id Route',userid)
     const userDetails = await UserData.findOne({
         where: {data_user_id:userid}
     })
+    console.log('This is the what is returned from the UserData table',userDetails)
     res.json(userDetails)
 })
 

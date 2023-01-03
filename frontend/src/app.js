@@ -13,12 +13,14 @@ import MealLog from './pages/MealLog';
 function App() {
   return (
     <CurrentUserProvider>
-     <Navbar />
+      <Navbar />
+
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route exact path='/login' element={<Login/>}/>
           <Route exact path='/signup' element={<Signup/>}/>
           <Route exact path='/profile' element={<Profile/>}/>
+          <Route exact path='/meals' element={<MealLog/>}/>
           <Route path='/*' element={<Error404 />} />
         </Routes>
     </CurrentUserProvider>

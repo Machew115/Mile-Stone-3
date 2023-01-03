@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     workout_exercise:{
       type:DataTypes.STRING,
-      allowNull:true
+      allowNull: true
     },
     workout_sets: {
       type:DataTypes.INTEGER,

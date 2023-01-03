@@ -18,7 +18,8 @@ function Signup() {
         e.preventDefault();
         
         // Make a request to the server to create a new user
-        const response = await fetch(`http://localhost:5500/users/`, {
+        const response = await fetch(`http://localhost:5000/users/`, {
+
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
