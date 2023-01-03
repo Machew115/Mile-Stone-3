@@ -14,19 +14,19 @@ const Profile = () => {
                     <div className='profile'>
                     <div>
                         <img src='./profile-photo-icon.jpg' alt='profile pic'/><br />
-                        <p>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</p>
-                        <p>USERID:{currentUser?.user.user_id}</p>    
+                        <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
+                        <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                     </div>
                     <div text-align='left'>
                     <h3>User Details:</h3>
-                    <p>Start Date: {currentUser?.userdata.data_start_date}</p>
-                    <p>Starting Weight:  {currentUser?.userdata.data_start_weight} lbs</p>
-                    <p>Starting Waist:  {currentUser?.userdata.data_start_waist} inches</p>
-                    <p>Starting Chest:  {currentUser?.userdata.data_start_chest} inches</p>
-                    <p>Starting Shoulders: {currentUser?.userdata.data_start_shoulder} inches</p>
-                    <p>Starting Biceps:  {currentUser?.userdata.data_start_biceps} inches</p>
-                    <p>Starting Thighs:  {currentUser?.userdata.data_start_thighs} inches</p>
-                    <p>Starting Calves:  {currentUser?.userdata.data_start_calves} inchees</p>                               
+                    <p>Start Date: <b>{currentUser?.userdata.data_start_date}</b></p>
+                    <p>Starting Weight: <b>{currentUser?.userdata.data_start_weight} lbs</b></p>
+                    <p>Starting Waist: <b>{currentUser?.userdata.data_start_waist} inches</b></p>
+                    <p>Starting Chest: <b>{currentUser?.userdata.data_start_chest} inches</b></p>
+                    <p>Starting Shoulders: <b>{currentUser?.userdata.data_start_shoulders} inches</b></p>
+                    <p>Starting Biceps:  <b>{currentUser?.userdata.data_start_biceps} inches</b></p>
+                    <p>Starting Thighs:  <b>{currentUser?.userdata.data_start_thighs} inches</b></p>
+                    <p>Starting Calves:  <b>{currentUser?.userdata.data_start_calves} inchees</b></p>                               
                     </div> 
             </div>
         </div>
