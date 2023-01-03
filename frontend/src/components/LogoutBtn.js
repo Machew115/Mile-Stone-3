@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import {useContext} from "react";
 import { CurrentUser } from "../context/CurrentUser";
 
 const LogoutBtn = () => {
@@ -7,7 +7,7 @@ const LogoutBtn = () => {
     function logout(){
         localStorage.removeItem('token')
         setCurrentUser(null)
-        window.location.reload(false)
+        window.location.reload(true)
     }
 
     return (
