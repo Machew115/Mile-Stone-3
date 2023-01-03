@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Error404 from './pages/Error404';
 import Navbar from './components/Navbar';
 import CurrentUserProvider from './context/CurrentUser';
+import MealLog from './pages/MealLog';
 
 function App() {
   return (
