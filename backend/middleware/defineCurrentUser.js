@@ -2,7 +2,7 @@ const db = require("../models")
 const jwt = require('json-web-token')
 
 // Import User model from the db object
-const { Users } = db;
+const { Users,UserData } = db;
 
 // Define the defineCurrentUser function
 async function defineCurrentUser(req, res, next){
@@ -21,8 +21,13 @@ async function defineCurrentUser(req, res, next){
                     user_id: id
                 }
             })
+            let userdata = await UserData.findOne({ 
+                where: {
+                    data_user_id: id
+                }
+            })
             // Set the currentUser property of the request object to the user
-            req.currentUser = user
+            req.currentUser = {user,userdata}
         }
         next()
     } catch(err){

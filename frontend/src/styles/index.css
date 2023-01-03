@@ -26,4 +26,18 @@ body #greet {
 body #heart {
   height: 40px;
   width: auto;
-}/*# sourceMappingURL=index.css.map */
+}
+
+.profile {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 20px 0px;
+}
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { CurrentUser } from '../context/CurrentUser'; // import the CurrentUser
-import Navbar from '../components/Navbar';
 
 const Home = () => {
     const { currentUser } = useContext(CurrentUser); // get the currentUser from the context
 
     return (
         <div>
-            <Navbar/>
             {currentUser ? (
                 <div>
                     <p id='greet' className='fw-bold'>Welcome, {currentUser.user_f_name}!</p>

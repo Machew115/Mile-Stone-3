@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.DATE,
       allowNull:true
     },
-    date_current_date:{
+    data_current_date:{
       type:DataTypes.DATE,
       allowNull:true
     },
