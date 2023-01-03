@@ -22,6 +22,7 @@ const Navbar = () => {
                         {/* following href routes to be changed later to respective routes*/}
                         <li><a className="dropdown-item" href="/">Workout Log</a></li>
                         <li><a className="dropdown-item" href="/meals">Food Log</a></li>
+                        <li><a className="dropdown-item" href="/profile">Profile</a></li>
                         <LogoutBtn/>
                     </ul>
                 </div>
