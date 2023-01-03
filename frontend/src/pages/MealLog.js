@@ -13,7 +13,7 @@ function MealLog() {
         if(currentUser) {
             // Fetch the meals data from the server and store it in the state
             async function fetchData() {
-                console.log(currentUser.user.user_id)
+                console.log(currentUser)
                 const response = await fetch(`http://localhost:5000/meals?meal_user_id=${currentUser.user.user_id}&meal_date=${selectedDate}`); // route subject to change depending on server route
                 const data = await response.json();
                 setMeals(data);

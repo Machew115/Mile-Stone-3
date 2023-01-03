@@ -1,14 +1,15 @@
 import {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
-import Login from './Login';
 
 const Profile = () => {
-    const {currentUser} =useContext(CurrentUser)    
+    const {currentUser} =useContext(CurrentUser)
+    
 
     return (
         <div>
             {currentUser ? (
-            <div>
+            currentUser.userdata ? (
+                <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
                     <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
                     <div className='profile'>
@@ -28,11 +29,27 @@ const Profile = () => {
                     <p>Starting Thighs:  <b>{currentUser?.userdata.data_start_thighs} inches</b></p>
                     <p>Starting Calves:  <b>{currentUser?.userdata.data_start_calves} inchees</b></p>                               
                     </div> 
+                </div>
             </div>
-        </div>
+            ):(
+                // add code to navigate to create userData Form
+                <div>
+                    <h3> No User Details Yet!</h3>
+                </div>
+            )
+        
               
             ) : (
-            <Login />
+                // code to navigate to login
+                <div>
+                    <h3 id='loading'>Loading...</h3>
+                    {// potentially can be changed to something else, or extend time in case its just taking a while to load?
+                    setTimeout(() => {
+                        return (
+                            <a className='btn btn-secondary' href='/login'>Login?</a>
+                        )
+                    }, 5000)}
+                </div>
             )}
         </div>
     );
