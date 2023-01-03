@@ -1,7 +1,7 @@
 {
   "name": "mile-stone-3",
   "version": "1.0.0",
-  "description": "Alex Aguirre",
+  "description": "Matthew Herrera",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -40,6 +40,7 @@ Users 1:n with Meals on user_id<br>
 Exercises <br>
 
 ## Contributors
+
 [Alex Aguirre](https://github.com/AlexAguirre70) <br>
 [Gustavo Martinez ](https://github.com/Gustavo0623) <br>
 [Matthew Herrera](https://github.com/Machew115) <br>

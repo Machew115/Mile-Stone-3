@@ -42,7 +42,6 @@ function MealLog() {
         // return the updated accumulator object
         return acc;
     }, {});
-
     // Use the selected date to filter the data being displayed
     const displayedMeals = groupedMeals[selectedDate] || [];
 
@@ -65,4 +64,6 @@ function MealLog() {
     );
 }
 
+
 export default MealLog;
+

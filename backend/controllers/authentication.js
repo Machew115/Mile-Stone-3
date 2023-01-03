@@ -37,7 +37,6 @@ auth.get('/profile', async (req, res) => {
             const result= await jwt.decode(process.env.JWT_SECRET,token)
             //Get the logged in user's id from the payload
             const id=result.value.id
-           
             //Find the user object using their id
             let user= await Users.findOne({
                 where:{user_id:id}
@@ -49,7 +48,6 @@ auth.get('/profile', async (req, res) => {
             )
             res.json({user, userdata})
         }
-    
     } catch{
         res.json(null)
     }

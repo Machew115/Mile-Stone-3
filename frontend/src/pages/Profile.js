@@ -1,9 +1,10 @@
 import {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
+import Login from './Login';
 
 const Profile = () => {
-    const {currentUser} =useContext(CurrentUser)
-    
+    const {currentUser} =useContext(CurrentUser)    
+
 
     return (
         <div>

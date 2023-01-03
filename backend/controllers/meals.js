@@ -1,39 +1,39 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../models');
-const { Op } = require('sequelize');
+const mealsRouter = require('express').Router()
+const { request } = require('express')
+const db = require('../models/')
+const{Meals} = db
 
+mealsRouter.get('/user/:id', async(req,res)=>{
+       let userid = Number(req.params.id)
+       const userMeals = await Meals.findAll({
+              where: {meal_user_id: userid},
+       }) 
+       res.json(userMeals)
+})
 
-// get all meals for the specified user and date
-router.get('/', async (req, res) => {
-    try {
-        // get the user id and date from the query string
-        const { meal_user_id, meal_date } = req.query;
-        
-        // Convert the meal_date string to a Date object
-        const startDate = new Date(meal_date);
-    
-        // Set the day of the month for the end date to be the day after the start date
-        const endDate = new Date(startDate);
-        endDate.setDate(endDate.getDate() + 1);
-    
-        // find all meals that match the user id and date
-        const meals = await db.Meals.findAll({
-            where: {
-            meal_user_id: meal_user_id,
-            meal_date: {
-                [Op.between]: [startDate, endDate]
-            }
-            }
-        });
-        
-        // send the meals data as a response
-        res.json(meals);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'An error occurred' });
-    }
-});
-  
+mealsRouter.get('/user/:id/date/:date',async(req,res)=>{
+           let userid = Number(req.params.id)
+           let selectDate = (req.params.date)
+           console.log("this hit me",userid,selectDate)
+           const userMeal = await Meals.findOne({
+                  where: {meal_user_id: userid},
+                  where: {meal_date: selectDate}
+           }) 
+           console.log("this is what you get", userMeal)
+           res.json(userMeal)
+      })
 
-module.exports = router;
+mealsRouter.put('/user/:id/edit', async(req,res)=>{
+       const id = (req.body.meal_id)
+       const userMeal = await Meals.findByPk(id)
+       userMeal.meal_description = req.body.meal_description;
+       userMeal.meal_calories = req.body.meal_calories;
+       userMeal.protein = req.body.protein;
+       userMeal.fat = req.body.fat;
+       userMeal.carbs = req.body.carbs;
+       userMeal.save()
+       res.send('success')
+
+})
+
+module.exports = mealsRouter
