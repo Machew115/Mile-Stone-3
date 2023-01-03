@@ -1,72 +1,87 @@
-import { useEffect, useState, useCallback, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CurrentUser } from '../context/CurrentUser'
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { setCurrentUser } = useContext(CurrentUser);
+    const[credentials,setCredentials]= useState({
+        user_email:'',
+        user_password: ''
+    })
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     // Declare a state variable for the checkbox and set its initial value to false
-    const [showPassword, setShowPassword] = useState(false);
-    const { setCurrentUser } = useContext(CurrentUser);
+    const [showPassword, setShowPassword] = useState(false);   
+
+    useEffect(() => {
+        const input = document.querySelector('input');
+
+        input.addEventListener('focus', () => {
+        input.classList.add('focused');
+        });
+
+        input.addEventListener('blur', () => {
+        input.classList.remove('focused');
+        });
+
+    }, []);
 
 
-    const handleSubmit = useCallback(async (event) => {
-        event.preventDefault();
-        try {
-        // send a request to the server to verify the email and password
-        const response = await fetch('http://localhost:5500/authentication/', { // to be changed to server route.
+    async function handleSubmit(e) {
+        e.preventDefault();
+                // send a request to the server to verify the email and password
+        const response = await fetch('http://localhost:5500/authentication', { // to be changed to server route.
             method: 'POST',
             credentials: 'include',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify(credentials)
         });
-
+        const data = await response.json();
         if (response.status === 200) {
-            const user = await response.json();
-            setCurrentUser(user);
-            // navigate to the home page if login was successful
-            navigate('/');
+            setCurrentUser(data.user);
+            localStorage.setItem('token',data.token)
+            // navigate to the profile page if it was successful
+           navigate('/profile');
         } else {
-            console.log(response) // test
             // display an error message if login failed
             setError('Invalid email or password');
         }
-        } catch (error) {
-        setError(error.message);
-        }
-    }, [email, password, navigate, setCurrentUser]);
+        
+    };
 
     useEffect(() => {
         // clear the error message when the email or password changes
         setError(null);
-    }, [email, password]);
+    }, [credentials.user_email, credentials.user_password]);
 
     return (
         <form>
         {error && <p>{error}</p>}
-        <label>
-            Username:
+        <label htmlFor='user_email'>Username (user your email address): </label>
             <input
             type="text"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            required
+            placeholder='email'
+            name = 'user_email'
+            id='user_email'
+            value={credentials.user_email}
+            onChange={(event) => setCredentials({...credentials,user_email:event.target.value})}
             />
-        </label>
+        
         <br />
-        <label>
-            Password:
-            {/* Use a ternary operator to conditionally render the password input field based on the value of the showPassword state variable */}
-            <input 
+        <label htmlFor='user_password'> Password: </label>
+        <input 
             type={showPassword ? "text" : "password"} 
-            name="password" 
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            required
+            placeholder='password'
+            name="user_password"
+            id='user_password' 
+            value={credentials.user_password}
+            onChange={(event) => setCredentials({...credentials,user_password:event.target.value})}
             />
-        </label>
+ 
         <br />
         {/* Add a checkbox input field and bind it to the showPassword state variable */}
         <input type="checkbox" checked={showPassword} onChange={e => setShowPassword(e.target.checked)} />

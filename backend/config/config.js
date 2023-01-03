@@ -6,7 +6,7 @@ module.exports={
       "password": process.env.DB_PASSWORD,
       "database": process.env.DB_DATABASE,
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
-      "port":5500,
+      "port":5432,
       "dialect": "postgres"
     },
     "test": {
@@ -14,7 +14,7 @@ module.exports={
       "password": process.env.DB_PASSWORD,
       "database": process.env.DB_DATABASE,
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
-      "port":5500,
+      "port":5432,
       "dialect": "postgres"
     },
     "production": {
@@ -22,7 +22,7 @@ module.exports={
       "password": process.env.DB_PASSWORD,
       "database": process.env.DB_DATABASE,
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
-      "port":5500,
+      "port":5432,
       "dialect": "postgres"
     }
   }

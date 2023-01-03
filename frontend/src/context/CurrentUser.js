@@ -4,18 +4,17 @@ import { createContext, useState, useEffect } from "react";
 export const CurrentUser = createContext()
 
 function CurrentUserProvider({ children }){
-
     const [currentUser, setCurrentUser] = useState(null)
-
     useEffect(() => {
         const getLoggedInUser = async () => {
-            console.log('test')
             let response = await fetch('http://localhost:5500/authentication/profile', {
+                credentials: 'include', 
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             })
-            let user = await response.json()
+            
+            let user = await response.json()       
             setCurrentUser(user)
         }
         getLoggedInUser()

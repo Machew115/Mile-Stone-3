@@ -25,27 +25,27 @@ module.exports = (sequelize, DataTypes) => {
     },
     meal_date:{ 
       type:DataTypes.DATE,
-      allowNull:false
+      allowNull:true
     },
     meal_description:{
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     },
     meal_calories:{
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true
     },
     protein: {
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true
     },
     fat: {
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true
     },
     carbs: {
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true
     }
   }, {
     sequelize,

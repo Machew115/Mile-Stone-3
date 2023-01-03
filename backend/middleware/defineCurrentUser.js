@@ -1,8 +1,8 @@
 const db = require("../models")
-const jwt = require('jsonwebtoken')
+const jwt = require('json-web-token')
 
 // Import User model from the db object
-const { User } = db;
+const { Users,UserData } = db;
 
 // Define the defineCurrentUser function
 async function defineCurrentUser(req, res, next){
@@ -15,14 +15,20 @@ async function defineCurrentUser(req, res, next){
             const result = await jwt.decode(process.env.JWT_SECRET, token)
             // Extract the user ID from the token payload
             const { id } = result.value
-            // Find the user in the database using the user ID
-            let user = await User.findOne({ 
+                // Find the user in the database using the user ID
+            let user = await Users.findOne({ 
                 where: {
                     user_id: id
                 }
             })
+            let userdata = await UserData.findOne({ 
+                where: {
+                    data_user_id: id
+                }
+            })
             // Set the currentUser property of the request object to the user
             req.currentUser = user
+            req.currentUser = {user,userdata}
         }
         next()
     } catch(err){

@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     workout_user_id: {
     type:DataTypes.INTEGER,
     references:{model: 'users', key: 'user_id'},
-    allowNull:false
+    allowNull:true
     },
     workout_date: {
       type:DataTypes.DATE,
-      allowNull:false
+      allowNull:true
     },
     workout_muscle_group:{
       type:DataTypes.STRING,
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     workout_exercise:{
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull:true
     },
     workout_sets: {
       type:DataTypes.INTEGER,
@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     workout_duration:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     }, 
    }, {
     sequelize,

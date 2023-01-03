@@ -1,0 +1,43 @@
+body {
+  line-height: 1.5;
+}
+body #nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body #nav #logo a {
+  font-size: 32px;
+  line-height: 1.5;
+}
+body #nav #user-menu {
+  display: flex;
+  justify-content: space-around;
+  width: 15%;
+}
+body #nav #user-menu #dropdown {
+  width: 40px;
+  overflow: hidden;
+}
+body #greet {
+  font-size: 18px;
+  text-align: center;
+}
+body #heart {
+  height: 40px;
+  width: auto;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 20px 0px;
+}
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+}
+
+/*# sourceMappingURL=index.css.map */
