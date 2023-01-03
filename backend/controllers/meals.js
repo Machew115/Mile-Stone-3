@@ -23,23 +23,17 @@ mealsRouter.get('/user/:id/date/:date',async(req,res)=>{
            res.json(userMeal)
       })
 
-//mealsRouter.post('/user/:id/date/:date', async(req,res)=>{
-       //let userid = Number(req.params.id)
-       //let selectDate = (req.params.date)
-      // const userMeal = await Meals.findOne({
-       //       where: {meal_user_id: userid},
-       //       where: {meal_date: selectDate}
-      // })
-      // if (!userMeal) {
-     //         res.status(404).send("data is not found");
-      // }
-      // else {
-       //       userMeal.meal_description.
-      //        userMeal.protein
-       //       userMeal.fat
-       //       userMeal.carbs
-      // }
+mealsRouter.put('/user/:id/edit', async(req,res)=>{
+       const id = (req.body.meal_id)
+       const userMeal = await Meals.findByPk(id)
+       userMeal.meal_description = req.body.meal_description;
+       userMeal.meal_calories = req.body.meal_calories;
+       userMeal.protein = req.body.protein;
+       userMeal.fat = req.body.fat;
+       userMeal.carbs = req.body.carbs;
+       userMeal.save()
+       res.send('success')
 
-//})
+})
 
 module.exports = mealsRouter
