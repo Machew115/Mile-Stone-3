@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CurrentUser } from '../context/CurrentUser';
-import Navbar from '../components/Navbar';
 
 function MealLog() {
     // Declare state variables to store the selected date and the meals data
@@ -14,8 +13,8 @@ function MealLog() {
         if(currentUser) {
             // Fetch the meals data from the server and store it in the state
             async function fetchData() {
-                console.log(selectedDate)
-                const response = await fetch(`http://localhost:5000/meals?meal_user_id=${currentUser.user_id}&meal_date=${selectedDate}`); // route subject to change depending on server route
+                console.log(currentUser.user.user_id)
+                const response = await fetch(`http://localhost:5000/meals?meal_user_id=${currentUser.user.user_id}&meal_date=${selectedDate}`); // route subject to change depending on server route
                 const data = await response.json();
                 setMeals(data);
                 console.log(data)
@@ -49,7 +48,6 @@ function MealLog() {
 
     return (
         <div>
-            <Navbar/>
             {/* Date picker to allow the user to select the date */}
             <input type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} />
             {/* display the meal entries */}
