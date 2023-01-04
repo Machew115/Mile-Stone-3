@@ -23,6 +23,27 @@ mealsRouter.get('/user/:id/date/:date',async(req,res)=>{
            res.json(userMeal)
       })
 
+mealsRouter.post('/user/:id/create', (req, res)=> {
+       const meal_user_id = Number(req.params.id);
+       const meal_date = req.body.meal_date;
+       const meal_description = req.body.meal_description;
+       const meal_calories = req.body.meal_calories;
+       const protein = req.body.protein;
+       const fat = req.body.fat;
+       const carbs = req.body.carbs;
+       const newMeal =  new Meals({
+              meal_user_id,
+              meal_date,
+              meal_description,
+              meal_calories,
+              protein,
+              fat,
+              carbs
+       });
+       newMeal.save();
+       res.send("boom")
+})
+
 mealsRouter.put('/user/:id/edit', async(req,res)=>{
        const id = (req.body.meal_id)
        const userMeal = await Meals.findByPk(id)
@@ -34,6 +55,14 @@ mealsRouter.put('/user/:id/edit', async(req,res)=>{
        userMeal.save()
        res.send('success')
 
+})
+
+mealsRouter.delete('/user/:id/meal_id/:meal_id/delete', (req,res) => {
+       const id = (req.params.meal_id)
+       Meals.destroy({
+              where: {meal_id : id}
+       })
+       res.send('nice')
 })
 
 module.exports = mealsRouter
