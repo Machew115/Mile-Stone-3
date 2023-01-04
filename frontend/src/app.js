@@ -1,4 +1,5 @@
-import { Route,Routes} from 'react-router-dom';
+import React from 'react';
+import { Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -9,10 +10,12 @@ import CurrentUserProvider from './context/CurrentUser';
 import MealLog from './pages/MealLog';
 import MealForm from './pages/MealForm';
 
+
 function App() {
   return (
     <CurrentUserProvider>
       <Navbar />
+
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route exact path='/login' element={<Login/>}/>
@@ -23,7 +26,6 @@ function App() {
           <Route path='/*' element={<Error404 />} />
         </Routes>
     </CurrentUserProvider>
-    
   );
 }
 

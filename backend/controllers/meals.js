@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const mealsRouter = express.Router();
 const db = require('../models');
 const { Op } = require('sequelize');
 
 
 // get all meals for the specified user and date
-router.get('/', async (req, res) => {
+mealsRouter.get('/', async (req, res) => {
     try {
         // get the user id and date from the query string
         const { meal_user_id, meal_date } = req.query;
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
     }
 });
   
-router.post('/', async (req, res) => {
+mealsRouter.post('/', async (req, res) => {
     try {
         // get the meal data from the request body
         const {meal_user_id, meal_description, meal_calories, protein, fat, carbs, meal_date} = req.body;
@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+mealsRouter.put('/:id', async (req, res) => {
     try {
         // get the meal id from the request params
         const { id } = req.params;
@@ -83,4 +83,4 @@ router.put('/:id', async (req, res) => {
   
 
 
-module.exports = router;
+module.exports = mealsRouter
