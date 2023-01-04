@@ -7,5 +7,5 @@ function Error404() {
         </main>
     );
 }
-
 export default Error404;
+
