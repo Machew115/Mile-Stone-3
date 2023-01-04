@@ -4,7 +4,7 @@ import Login from './Login';
 
 const Profile = () => {
     const {currentUser} =useContext(CurrentUser)    
-
+    
 
     return (
         <div>
@@ -15,7 +15,8 @@ const Profile = () => {
                     <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
                     <div className='profile'>
                         <div>
-                            <img src='./profile-photo-icon.jpg' alt='profile pic'/><br />
+                            <img src={`${currentUser?.user.user_avatar_url}`} alt='profile pic'/><br />
+                            {currentUser?.user_avatar_url}
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
                             <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                         </div>

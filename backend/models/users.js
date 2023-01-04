@@ -40,6 +40,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: new Date()
     },
+    user_avatar_url: {
+      type: 'string',
+      allowNull: true,
+      defaultValue: './profile-photo-icon.jpg'
+    },
   }, {
     sequelize,
     modelName: 'Users',

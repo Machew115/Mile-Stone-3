@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   UserData.init({
     data_user_id:{ 
       type:DataTypes.INTEGER,
+      primaryKey:true,
       references:{model:'users',key: 'user_id'},
       allowNull:false
     },
