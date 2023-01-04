@@ -61,6 +61,7 @@ function MealLog() {
                 <p>Time: {selectedDate}</p>
             </div>
             ))}
+            <a href='/meals_add' className='btn btn-secondary'> Add Meal </a>
         </div>
     );
 }

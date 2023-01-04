@@ -35,5 +35,29 @@ router.get('/', async (req, res) => {
     }
 });
   
+router.post('/', async (req, res) => {
+    try {
+        // get the meal data from the request body
+        const {meal_user_id, meal_description, meal_calories, protein, fat, carbs, meal_date} = req.body;
+        
+        // create a new meal using the data
+        const newMeal = await db.Meals.create({
+            meal_user_id,
+            meal_description,
+            meal_calories,
+            protein,
+            fat,
+            carbs,
+            meal_date
+        });
+        
+        // send the new meal data as a response
+        res.json(newMeal);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
+
 
 module.exports = router;
