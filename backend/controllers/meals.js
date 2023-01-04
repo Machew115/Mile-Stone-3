@@ -1,39 +1,86 @@
-const mealsRouter = require('express').Router()
-const { request } = require('express')
-const db = require('../models/')
-const{Meals} = db
+const express = require('express');
+const mealsRouter = express.Router();
+const db = require('../models');
+const { Op } = require('sequelize');
 
-mealsRouter.get('/user/:id', async(req,res)=>{
-       let userid = Number(req.params.id)
-       const userMeals = await Meals.findAll({
-              where: {meal_user_id: userid},
-       }) 
-       res.json(userMeals)
-})
 
-mealsRouter.get('/user/:id/date/:date',async(req,res)=>{
-           let userid = Number(req.params.id)
-           let selectDate = (req.params.date)
-           console.log("this hit me",userid,selectDate)
-           const userMeal = await Meals.findOne({
-                  where: {meal_user_id: userid},
-                  where: {meal_date: selectDate}
-           }) 
-           console.log("this is what you get", userMeal)
-           res.json(userMeal)
-      })
+// get all meals for the specified user and date
+mealsRouter.get('/', async (req, res) => {
+    try {
+        // get the user id and date from the query string
+        const { meal_user_id, meal_date } = req.query;
+        
+        // Convert the meal_date string to a Date object
+        const startDate = new Date(meal_date);
+    
+        // Set the day of the month for the end date to be the day after the start date
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + 1);
+    
+        // find all meals that match the user id and date
+        const meals = await db.Meals.findAll({
+            where: {
+            meal_user_id: meal_user_id,
+            meal_date: {
+                [Op.between]: [startDate, endDate]
+            }
+            }
+        });
+        
+        // send the meals data as a response
+        res.json(meals);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
+  
+mealsRouter.post('/', async (req, res) => {
+    try {
+        // get the meal data from the request body
+        const {meal_user_id, meal_description, meal_calories, protein, fat, carbs, meal_date} = req.body;
+        
+        // create a new meal using the data
+        const newMeal = await db.Meals.create({
+            meal_user_id,
+            meal_description,
+            meal_calories,
+            protein,
+            fat,
+            carbs,
+            meal_date
+        });
+        
+        // send the new meal data as a response
+        res.json(newMeal);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
 
-mealsRouter.put('/user/:id/edit', async(req,res)=>{
-       const id = (req.body.meal_id)
-       const userMeal = await Meals.findByPk(id)
-       userMeal.meal_description = req.body.meal_description;
-       userMeal.meal_calories = req.body.meal_calories;
-       userMeal.protein = req.body.protein;
-       userMeal.fat = req.body.fat;
-       userMeal.carbs = req.body.carbs;
-       userMeal.save()
-       res.send('success')
+mealsRouter.put('/:id', async (req, res) => {
+    try {
+        // get the meal id from the request params
+        const { id } = req.params;
+    
+        // get the updated data from the request body
+        const { description, calories, protein, fat, carbs } = req.body;
+    
+        // find the meal with the matching id
+        const meal = await db.Meals.findByPk(id);
+    
+        // update the meal with the new data
+        await meal.update({ description, calories, protein, fat, carbs });
+    
+        // send the updated meal data as a response
+        res.json(meal);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
+  
 
-})
 
 module.exports = mealsRouter
