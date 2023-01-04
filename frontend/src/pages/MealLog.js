@@ -31,7 +31,6 @@ function MealLog() {
 
         // create a date string from the meal's date
         if (!acc[date]) {
-            console.log('test')
             // if there is no key for the date in the accumulator object yet, create one
             acc[date] = [meal];
         } else {

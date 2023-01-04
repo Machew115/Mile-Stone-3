@@ -59,5 +59,28 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try {
+        // get the meal id from the request params
+        const { id } = req.params;
+    
+        // get the updated data from the request body
+        const { description, calories, protein, fat, carbs } = req.body;
+    
+        // find the meal with the matching id
+        const meal = await db.Meals.findByPk(id);
+    
+        // update the meal with the new data
+        await meal.update({ description, calories, protein, fat, carbs });
+    
+        // send the updated meal data as a response
+        res.json(meal);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
+  
+
 
 module.exports = router;
