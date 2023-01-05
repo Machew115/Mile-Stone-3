@@ -14,12 +14,10 @@ mealsRouter.get('/user/:id', async(req,res)=>{
 mealsRouter.get('/user/:id/date/:date',async(req,res)=>{
            let userid = Number(req.params.id)
            let selectDate = (req.params.date)
-           console.log("this hit me",userid,selectDate)
            const userMeal = await Meals.findOne({
                   where: {meal_user_id: userid},
                   where: {meal_date: selectDate}
            }) 
-           console.log("this is what you get", userMeal)
            res.json(userMeal)
       })
 
@@ -66,3 +64,4 @@ mealsRouter.delete('/user/:id/meal_id/:meal_id/delete', (req,res) => {
 })
 
 module.exports = mealsRouter
+
