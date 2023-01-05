@@ -81,6 +81,23 @@ mealsRouter.put('/:id', async (req, res) => {
     }
 });
   
+mealsRouter.delete('/:id', async (req, res) => {
+    try {
+        // get the meal id from the request params
+        const { id } = req.params;
 
+        // find the meal with the matching id
+        const meal = await db.Meals.findByPk(id);
+
+        // delete the meal
+        await meal.destroy();
+
+        // send a response indicating that the meal was successfully deleted
+        res.sendStatus(200);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred' });
+    }
+});
 
 module.exports = mealsRouter

@@ -24,6 +24,20 @@ function MealLog() {
         }
     }, [selectedDate, currentUser]);
 
+    // Meal delete request 
+    async function deleteMeal(mealId) {
+        try {
+            await fetch(`http://localhost:5000/meals/${mealId}`, {
+                method: 'DELETE',
+            });
+            // After the DELETE request is completed, reload page
+            window.location.reload()
+        } catch (error) {
+            console.error(error);
+        }
+    }
+      
+
     // Group the meals by date
     const groupedMeals = meals.reduce((acc, meal) => {
         
@@ -64,6 +78,7 @@ function MealLog() {
                 <p>Carbs: {meal.carbs}</p>
                 <p>Time: {selectedDate}</p>
                 <button onClick={() => displayForm(meal.meal_id)} className='btn btn-warning'>Edit</button>
+                <button onClick={() => deleteMeal(meal.meal_id)} className='btn btn-danger'>Delete</button>
                 {editingMealId === meal.meal_id && display ? <MealEdit meal={meal} /> : null}
             </div>
             ))}

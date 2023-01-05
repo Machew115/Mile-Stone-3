@@ -29,7 +29,7 @@ function MealEdit({ meal }) {
             body: JSON.stringify(newMealData),
         });
 
-        // navigate to meals after
+        // reload page after
         window.location.reload()
     };
 
