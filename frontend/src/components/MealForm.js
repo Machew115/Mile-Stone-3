@@ -1,10 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { CurrentUser } from '../context/CurrentUser';
+import React, { useState } from 'react';
 
-function MealForm() {
-
-    const navigate = useNavigate()
+function MealForm(props) {
     
     // Declare state variables to store the form data
     const [description, setDescription] = useState('');
@@ -12,9 +8,6 @@ function MealForm() {
     const [protein, setProtein] = useState(0);
     const [fat, setFat] = useState(0);
     const [carbs, setCarbs] = useState(0);
-
-    // Get the current user from the context
-    const { currentUser } = useContext(CurrentUser);
 
     // Handle form submission
     const handleSubmit = (event) => {
@@ -27,8 +20,8 @@ function MealForm() {
             protein: protein,
             fat: fat,
             carbs: carbs,
-            meal_user_id: currentUser.user.user_id,
-            meal_date: new Date(),
+            meal_user_id: props.user_id,
+            meal_date: props.selectedDate
         };
 
         // Send the new meal object to the server using a POST request
@@ -38,8 +31,8 @@ function MealForm() {
             body: JSON.stringify(newMeal),
         });
 
-        // navigate to meals after
-        navigate('/meals')
+        // reload page after
+        window.location.reload()
     };
 
     return (

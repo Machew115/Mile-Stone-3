@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import MealEdit from '../components/MealEdit';
+import MealForm from '../components/MealForm';
 import { CurrentUser } from '../context/CurrentUser';
 
 function MealLog() {
@@ -8,6 +9,7 @@ function MealLog() {
     const [meals, setMeals] = useState([]);
     const [editingMealId, setEditingMealId] = useState(null);
     const [display, setDisplay] = useState(false)
+    const [addDisplay, setAddDisplay] = useState(false)
 
     // user context
     const {currentUser} = useContext(CurrentUser)
@@ -41,7 +43,6 @@ function MealLog() {
     // Group the meals by date
     const groupedMeals = meals.reduce((acc, meal) => {
         
-        // use the toISOString method to convert the meal_date to a string in ISO format
         const date = selectedDate;
 
         // create a date string from the meal's date
@@ -64,6 +65,10 @@ function MealLog() {
         (display) ? setDisplay(false) : setDisplay(true)
     }
 
+    const displayAddForm = () => {
+        !addDisplay ? setAddDisplay(true) : setAddDisplay(false)
+    }
+
     return (
         <div>
             {/* Date picker to allow the user to select the date */}
@@ -82,7 +87,8 @@ function MealLog() {
                 {editingMealId === meal.meal_id && display ? <MealEdit meal={meal} /> : null}
             </div>
             ))}
-            <a href='/meals_add' className='btn btn-secondary'> Add Meal </a>
+            { !addDisplay ? <button onClick={() => displayAddForm()} className='btn btn-secondary'> Add Meal </button>: <button onClick={() => displayAddForm()} className='btn btn-secondary'>-</button>}
+            { addDisplay ? <MealForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
         </div>
     );
 }  
