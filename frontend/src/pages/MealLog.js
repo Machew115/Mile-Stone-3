@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+import MealEdit from '../components/MealEdit';
 import { CurrentUser } from '../context/CurrentUser';
 
 function MealLog() {
     // Declare state variables to store the selected date and the meals data
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
     const [meals, setMeals] = useState([]);
+    const [editingMealId, setEditingMealId] = useState(null);
+    const [display, setDisplay] = useState(false)
 
     // user context
     const {currentUser} = useContext(CurrentUser)
@@ -13,11 +16,9 @@ function MealLog() {
         if(currentUser) {
             // Fetch the meals data from the server and store it in the state
             async function fetchData() {
-                console.log(currentUser)
                 const response = await fetch(`http://localhost:5000/meals?meal_user_id=${currentUser.user.user_id}&meal_date=${selectedDate}`); // route subject to change depending on server route
                 const data = await response.json();
                 setMeals(data);
-                console.log(data)
             }
             fetchData();
         }
@@ -44,6 +45,11 @@ function MealLog() {
     // Use the selected date to filter the data being displayed
     const displayedMeals = groupedMeals[selectedDate] || [];
 
+    const displayForm = (meal) => {
+        setEditingMealId(meal);
+        (display) ? setDisplay(false) : setDisplay(true)
+    }
+
     return (
         <div>
             {/* Date picker to allow the user to select the date */}
@@ -57,13 +63,13 @@ function MealLog() {
                 <p>Fat: {meal.fat}</p>
                 <p>Carbs: {meal.carbs}</p>
                 <p>Time: {selectedDate}</p>
+                <button onClick={() => displayForm(meal.meal_id)} className='btn btn-warning'>Edit</button>
+                {editingMealId === meal.meal_id && display ? <MealEdit meal={meal} /> : null}
             </div>
             ))}
             <a href='/meals_add' className='btn btn-secondary'> Add Meal </a>
         </div>
     );
-}
+}  
 
-
-export default MealLog;
-
+export default MealLog
