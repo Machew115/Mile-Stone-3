@@ -11,10 +11,11 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg bg-light px-2" id='nav'>
             <div id='logo'>
                 <a className="navbar-brand fw-bold" href="/">Fit Track</a>
+                <img id='heart' className='px-2' alt='heart and pulse' src='./heart-beat-icon.png'></img>
             </div>
             {currentUser ? (
                 <div id='user-menu' className='btn-group'>
-                    <img id='heart' className='px-2' alt='heart and pulse' src='./heart-beat-icon.png'></img>
+                    <img className='px-2' src='./user.PNG' alt='profile pic'/>
                     <button type="button" id='dropdown' className="btn btn-sm btn-secondary px-2 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span className="visually-hidden">Toggle Dropdown</span>
                     </button>
@@ -28,7 +29,7 @@ const Navbar = () => {
                 </div>
             ) : (
                 <div>
-                    <a className='btn btn-primary' href='/login'> Login / Sign Up </a>
+                    <a className='btn btn-secondary' href='/login'> Login / Sign Up </a>
                 </div>
             )}
         </nav>

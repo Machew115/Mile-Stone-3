@@ -6,6 +6,14 @@ body #nav {
   justify-content: space-between;
   align-items: center;
 }
+body #nav #logo {
+  display: flex;
+  align-items: center;
+}
+body #nav #logo #heart {
+  height: 40px;
+  width: auto;
+}
 body #nav #logo a {
   font-size: 32px;
   line-height: 1.5;
@@ -13,19 +21,24 @@ body #nav #logo a {
 body #nav #user-menu {
   display: flex;
   justify-content: space-around;
-  width: 15%;
+}
+body #nav #user-menu img {
+  height: 50px;
+  width: auto;
+  background-color: transparent;
+  background-image: none;
 }
 body #nav #user-menu #dropdown {
-  width: 40px;
   overflow: hidden;
+  flex: none;
+}
+body #nav #user-menu ul {
+  left: auto;
+  right: 0;
 }
 body #greet {
   font-size: 18px;
   text-align: center;
-}
-body #heart {
-  height: 40px;
-  width: auto;
 }
 
 .profile {
@@ -38,8 +51,4 @@ body #heart {
   width: 150px;
   height: 150px;
   border-radius: 75px;
-}
-
-
-/*# sourceMappingURL=index.css.map */
-
+}/*# sourceMappingURL=index.css.map */
