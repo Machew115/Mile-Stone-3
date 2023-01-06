@@ -12,9 +12,12 @@ The interface will be resizable to view on different size screens. <br/>
 ## Technology
 * React - Frontend UI development
 * NodeJS - Backend development
-* CSS - Styling
+* CSS - UI Styling
+* Bootstrap Library - UI Styling
 * Sequelize - ORM to Generate and Migarte Models to Database
 * Postgres on AWS RDS - Database
+* Multer - local file storage
+* Amazon S3 - cloud file storage
 * RapidAPI to access exercises
 * AWS- Web Deployment
 * JWT Token Authorization - Security to authenticate user login

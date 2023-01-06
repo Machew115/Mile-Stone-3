@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1288.0",
     "bcrypt": "^5.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

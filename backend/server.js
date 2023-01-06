@@ -5,7 +5,8 @@ const cors = require('cors');
 const app = express()
 const {Sequelize} = require('sequelize')
 const defineCurrentUser = require('./middleware/defineCurrentUser');
-
+const multer = require('multer')
+const upload = multer({dest:'uploads/'})
 
 //middleware
 var corsOptions ={
@@ -38,6 +39,10 @@ app.use('/authentication',require('./controllers/authentication'))
 app.use('/users',require('./controllers/users'))
 app.use('/meals',require('./controllers/meals'))
 app.use('/workouts',require('./controllers/workouts'))
+
+app.post('/images', upload.single('avatar'), (req,res)=>{
+    res.send ('posted image')
+})
 
 //Listen
 app.listen(process.env.PORT,()=>{

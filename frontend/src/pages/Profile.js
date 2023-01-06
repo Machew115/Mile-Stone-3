@@ -1,7 +1,6 @@
 import {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
-import Login from './Login';
-
+import Avatar from './Avatar';
 const Profile = () => {
     const {currentUser} =useContext(CurrentUser)    
     
@@ -15,8 +14,7 @@ const Profile = () => {
                     <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
                     <div className='profile'>
                         <div>
-                            <img src={`${currentUser?.user.user_avatar_url}`} alt='profile pic'/><br />
-                            {currentUser?.user_avatar_url}
+                            <Avatar/>
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
                             <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                         </div>
@@ -39,7 +37,7 @@ const Profile = () => {
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
                     <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
                     <div className='profile'>
-                        <img src='./profile-photo-icon.jpg' alt='profile pic'/><br />
+                        <img src={`${currentUser?.user.user_avatar_url}`} alt='profile pic'/><br />
                         <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
                         <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                     </div>

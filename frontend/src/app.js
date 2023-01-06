@@ -8,6 +8,7 @@ import Error404 from './pages/Error404';
 import Navbar from './components/Navbar';
 import CurrentUserProvider from './context/CurrentUser';
 import MealLog from './pages/MealLog';
+import Avatar from './pages/Avatar';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route exact path='/signup' element={<Signup/>}/>
           <Route exact path='/profile' element={<Profile/>}/>
           <Route exact path='/meals' element={<MealLog/>}/>
+          <Route exact path='/avatar' element={<Avatar/>}/>
           <Route path='/*' element={<Error404 />} />
         </Routes>
     </CurrentUserProvider>
