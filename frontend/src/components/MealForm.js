@@ -36,7 +36,7 @@ function MealForm(props) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="add-form" onSubmit={handleSubmit}>
             <label htmlFor="description">Description:</label>
             <input
                 type="text"

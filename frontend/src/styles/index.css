@@ -5,6 +5,7 @@ body #nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #6d757d;
 }
 body #nav #logo {
   display: flex;
@@ -17,6 +18,10 @@ body #nav #logo #heart {
 body #nav #logo a {
   font-size: 32px;
   line-height: 1.5;
+  color: #dadada;
+}
+body #nav #logo a:hover {
+  background-color: #565e64;
 }
 body #nav #user-menu {
   display: flex;
@@ -35,6 +40,22 @@ body #nav #user-menu #dropdown {
 body #nav #user-menu ul {
   left: auto;
   right: 0;
+}
+body #meal-log {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body #meal-log #save-btn, body #meal-log .btn-danger, body #meal-log .btn-warning {
+  color: #000000;
+  cursor: pointer;
+}
+body .add-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 body #greet {
   font-size: 18px;

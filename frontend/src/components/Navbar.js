@@ -8,7 +8,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg bg-light px-2" id='nav'>
+        <nav className="navbar navbar-expand-lg px-2" id='nav'>
             <div id='logo'>
                 <a className="navbar-brand fw-bold" href="/">Fit Track</a>
                 <img id='heart' className='px-2' alt='heart and pulse' src='./heart-beat-icon.png'></img>

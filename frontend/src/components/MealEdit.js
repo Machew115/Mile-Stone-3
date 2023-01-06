@@ -35,49 +35,54 @@ function MealEdit({ meal }) {
 
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="description">Description:</label>
-            <input
-                type="text"
-                id="description"
-                value={description}
-                onChange={(event) => setDescription(event.target.value)}
-            />
-            <br />
-            <label htmlFor="calories">Calories:</label>
-            <input
-                type="number"
-                id="calories"
-                value={calories}
-                onChange={(event) => setCalories(event.target.value)}
-            />
-            <br />
-            <label htmlFor="protein">Protein (g):</label>
-            <input
-                type="number"
-                id="protein"
-                value={protein}
-                onChange={(event) => setProtein(event.target.value)}
-            />
-            <br />
-            <label htmlFor="fat">Fat (g):</label>
-            <input
-                type="number"
-                id="fat"
-                value={fat}
-                onChange={(event) => setFat(event.target.value)}
-            />
-            <br />
-            <label htmlFor="carbs">Carbs (g):</label>
-            <input
-                type="number"
-                id="carbs"
-                value={carbs}
-                onChange={(event) => setCarbs(event.target.value)}
-            />
-            <br />
-            <button type="submit" className='btn btn-secondary'>Save</button>
-        </form>
+        <tr>
+            <th scope='row'></th>
+            <td>
+                <input
+                    type="text"
+                    id="description"
+                    value={description}
+                    onChange={(event) => setDescription(event.target.value)}
+                />
+            </td>
+            <td>
+                <input
+                    className='w-50'
+                    type="number"
+                    id="calories"
+                    value={calories}
+                    onChange={(event) => setCalories(event.target.value)}
+                />
+            </td>
+            <td>
+                <input
+                    className='w-50'
+                    type="number"
+                    id="protein"
+                    value={protein}
+                    onChange={(event) => setProtein(event.target.value)}
+                />
+            </td>
+            <td>
+                <input
+                    className='w-50'
+                    type="number"
+                    id="fat"
+                    value={fat}
+                    onChange={(event) => setFat(event.target.value)}
+                />
+            </td>
+            <td>
+                <input
+                    className='w-50'
+                    type="number"
+                    id="carbs"
+                    value={carbs}
+                    onChange={(event) => setCarbs(event.target.value)}
+                />
+            </td>
+            <td onClick={handleSubmit} className='btn btn-secondary w-100' id='save-btn'>Save</td>
+        </tr>
     )
 
 }

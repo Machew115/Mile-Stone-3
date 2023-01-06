@@ -13,6 +13,7 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background-color: #6d757d;
 
         #logo {
 
@@ -27,6 +28,11 @@ body {
             a {
                 font-size: $heading-font-size;
                 line-height: $line-height;
+                color: #dadada;
+
+                &:hover {
+                    background-color: #565e64;
+                }
             }
         }
 
@@ -51,6 +57,27 @@ body {
                 right: 0;
             }
         }
+    }
+
+    #meal-log {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+
+        #save-btn, .btn-danger, .btn-warning {
+            color: #000000;
+            cursor: pointer;
+        }
+    }
+
+    .add-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     #greet {
