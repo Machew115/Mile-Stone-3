@@ -13,44 +13,84 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background-color: #6d757d;
 
         #logo {
 
+            display: flex;
+            align-items: center;
+
+            #heart {
+                height: 40px;
+                width: auto;
+            }
 
             a {
                 font-size: $heading-font-size;
                 line-height: $line-height;
+                color: #dadada;
+
+                &:hover {
+                    background-color: #565e64;
+                }
             }
         }
 
         #user-menu {
         display: flex;
         justify-content: space-around;
-        width: 15%;
+        
+            img{
+                height: 50px;
+                width: auto;
+                background-color: transparent;
+                background-image: none;
+            }
 
             #dropdown {
-                width: 40px;
                 overflow: hidden;
+                flex: none;
+            }
+
+            ul {
+                left: auto;
+                right: 0;
             }
         }
+    }
+
+    #meal-log {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+
+        #save-btn, .btn-danger, .btn-warning {
+            color: #000000;
+            cursor: pointer;
+        }
+    }
+
+    .add-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     #greet {
         font-size: $font-size;
         text-align: center;
     }
-
-    #heart {
-        height: 40px;
-        width: auto;
-    }
 }
 .profile {
-
         display: flex;
         justify-content: space-around;
         text-align: center;
         margin: 20px 0px;
+
     img {
         width: 150px;
         height: 150px;
