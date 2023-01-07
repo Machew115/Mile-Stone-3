@@ -65,10 +65,54 @@ body {
         justify-content: center;
         align-items: center;
 
+        input[type="date" i] {
 
+            border: none;
+        }
+        
+
+        #list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            #input {
+                margin: auto;
+
+                input {
+                    border: none;
+                    width: 100%;
+                }
+            }
+
+            .list-group-item {
+                overflow-x: scroll;
+            }
+
+            .btn-danger, .btn-warning {
+                width: 12.5%;
+            }
+
+            .edit-box {
+                display: flex;
+                flex-wrap: nowrap;
+
+                .list-group-item {
+                    overflow: auto;
+                }
+
+                #new-edit, #save-btn {
+                    margin: auto;
+                    text-align: center;
+                    width: 12.5%;
+                }
+            }
+        }
 
         #save-btn, .btn-danger, .btn-warning {
             color: #000000;
+            border: none;
+            background-color: transparent;
             cursor: pointer;
         }
     }

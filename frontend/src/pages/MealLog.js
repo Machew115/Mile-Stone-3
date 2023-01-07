@@ -70,39 +70,32 @@ function MealLog() {
     }
 
     return (
-        <div id="meal-log" className='table-responsive'>
+        <div id="meal-log" className='w-100 px-2 mt-2'>
             {/* Date picker to allow the user to select the date */}
             { currentUser ? <input className="px-2" type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} /> : null}
             {/* display the meal entries */}
-            <table className='table caption-top mx-auto'>
-                <caption>Meals</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Calories</th>
-                        <th scope="col">Protein</th>
-                        <th scope="col">Fat</th>
-                        <th scope="col">Carbs</th>
-                    </tr>
-                </thead>
-                {displayedMeals.map((meal) => (
-                    <tbody key={meal.meal_id}>
-                        <tr>
-                            <th scope='row'></th>
-                            <td>{meal.meal_description}</td>
-                            <td>{meal.meal_calories} (Calories)</td>
-                            <td>{meal.protein} (grams)</td>
-                            <td>{meal.fat} (grams)</td>
-                            <td>{meal.carbs} (grams)</td>
-                            <td onClick={() => displayForm(meal.meal_id)} className='btn btn-warning w-100'>Edit</td>
-                            <td onClick={() => deleteMeal(meal.meal_id)} className='btn btn-danger w-100'>Delete</td>
-                        </tr>
-                        {editingMealId === meal.meal_id && display ? <MealEdit meal={meal} /> : null}
-                    </tbody>
-                ))}
-            </table>
-            { !addDisplay && currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary'> Add Meal </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary'>-</button> : null}
+            <ul className="list-group list-group-horizontal justify-content-center w-75 mt-2">
+                <li className="list-group-item w-100">Description</li>
+                <li className="list-group-item w-100">Calories(kcal)</li>
+                <li className="list-group-item w-100">Protein(g)</li>
+                <li className="list-group-item w-100">Fat(g)</li>
+                <li className="list-group-item w-100">Carbs(g)</li>
+            </ul>
+            {displayedMeals.map((meal) => (
+                <div key={meal.meal_id} className="w-100 mt-2" id="list">
+                    <button onClick={() => displayForm(meal.meal_id)} className='btn btn-warning'>Edit</button>
+                    <ul className="list-group list-group-horizontal justify-content-center w-75">
+                        <li className='list-group-item w-100 text-nowrap'>{meal.meal_description}</li>
+                        <li className='list-group-item w-100 text-nowrap'>{meal.meal_calories} (kcal)</li>
+                        <li className='list-group-item w-100 text-nowrap'>{meal.protein} (g)</li>
+                        <li className='list-group-item w-100 text-nowrap'>{meal.fat} (g)</li>
+                        <li className='list-group-item w-100 text-nowrap'>{meal.carbs} (g)</li>
+                    </ul>
+                    <button onClick={() => deleteMeal(meal.meal_id)} className='btn btn-danger'>Delete</button>
+                    {editingMealId === meal.meal_id && display ? <MealEdit meal={meal} /> : null}
+                </div>
+            ))}
+            { !addDisplay && currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-2'> Add Meal </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-1'>-</button> : null}
             { addDisplay ? <MealForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
         </div>
     );

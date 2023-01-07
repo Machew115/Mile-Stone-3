@@ -47,8 +47,43 @@ body #meal-log {
   justify-content: center;
   align-items: center;
 }
+body #meal-log input[type=date i] {
+  border: none;
+}
+body #meal-log #list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body #meal-log #list #input {
+  margin: auto;
+}
+body #meal-log #list #input input {
+  border: none;
+  width: 100%;
+}
+body #meal-log #list .list-group-item {
+  overflow-x: scroll;
+}
+body #meal-log #list .btn-danger, body #meal-log #list .btn-warning {
+  width: 12.5%;
+}
+body #meal-log #list .edit-box {
+  display: flex;
+  flex-wrap: nowrap;
+}
+body #meal-log #list .edit-box .list-group-item {
+  overflow: auto;
+}
+body #meal-log #list .edit-box #new-edit, body #meal-log #list .edit-box #save-btn {
+  margin: auto;
+  text-align: center;
+  width: 12.5%;
+}
 body #meal-log #save-btn, body #meal-log .btn-danger, body #meal-log .btn-warning {
   color: #000000;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 body .add-form {
