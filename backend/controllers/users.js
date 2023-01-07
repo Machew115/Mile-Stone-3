@@ -1,7 +1,7 @@
 const userRouter = require('express').Router()
 const db = require('../models')
 const bcrypt =require('bcrypt')
-const e = require('express')
+
 
 const {Users, UserData} = db
 
@@ -21,6 +21,26 @@ userRouter.post('/', async(req,res)=>{
         })
         res.json(user)        
    }    
+})
+
+userRouter.post('/avatar', async(req,res)=>{
+  
+    let filepath = req.body.filename.split('\\').reverse()
+    filepath=filepath[0]
+  
+   
+    const response = await Users.update({user_avatar_url:filepath},
+        {where: {user_id: req.body.userid}
+        })
+        if(res.status(200)){
+            const newAvatar = await Users.findOne({
+                 where:{
+                    user_id: req.body.userid
+                }})
+            res.json(newAvatar)
+        } else {
+            res.json(err)  
+        }
 })
 
 userRouter.get('/:id', async(req,res)=>{
