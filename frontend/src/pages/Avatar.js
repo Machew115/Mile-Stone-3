@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext, useState } from 'react'
 import { CurrentUser } from '../context/CurrentUser'
 
+
 const Avatar = () => {
     const {currentUser} =useContext(CurrentUser) 
     const [filename, setFilename]=useState(null)
@@ -11,8 +12,7 @@ const Avatar = () => {
     let userid= currentUser.user.user_id
     
    async function uploadPhoto(e){
-        e.preventDefault()
-        
+        e.preventDefault()        
         const response = await fetch('http://localhost:5000/users/avatar', { 
         method: 'POST',
         headers: {
@@ -33,8 +33,6 @@ const Avatar = () => {
   return (
     <div>
         <img src={`${imageURL}`} alt={`${imageURL}`} /><br />
-                            {currentUser?.user_avatar_url}
-        
         <input type='file' name='avatar' onChange={e=>setFilename(e.target.value)} />
         <button className='primary' onClick={uploadPhoto}>Upload Photo</button>
     </div>

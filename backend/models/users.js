@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     user_avatar_url: {
       type: 'string',
       allowNull: true,
-      defaultValue: './profile-photo-icon.jpg'
+      defaultValue: 'https://s3.console.aws.amazon.com/s3/object/fittrack1?region=us-west-1&prefix=profile-photo-icon.jpg'
     },
   }, {
     sequelize,

@@ -2,6 +2,7 @@ require('dotenv').config()
 const fs= require('fs')
 const S3 = require('aws-sdk/clients/s3')
 
+
 //S3 Connection variables
     const bucketName = process.env.AWS_S3_BUCKET
     const region = process.env.AWS_S3_REGION
@@ -10,13 +11,14 @@ const S3 = require('aws-sdk/clients/s3')
 
     //Instantiate S3
 const s3 = new S3({
-     region,
+    region,
     accessKeyId,
     secretAccessKey
 })
 
+
 //upload a file to S3
-export function upload(file){
+function upload(file){
     const fileStream= fs.createReadStream(file.path)
 
     const uploadParams= {
@@ -26,4 +28,5 @@ export function upload(file){
     }
     return s3.upload(uploadParams).promise()
 }
+
 exports.uploadFile = uploadFile

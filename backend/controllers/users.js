@@ -26,7 +26,7 @@ userRouter.post('/', async(req,res)=>{
 userRouter.post('/avatar', async(req,res)=>{
   
     let filepath = req.body.filename.split('\\').reverse()
-    filepath=filepath[0]
+    filepath='https://s3.console.aws.amazon.com/s3/object/fittrack1?region=us-west-1&prefix='+filepath[0]
   
    
     const response = await Users.update({user_avatar_url:filepath},
