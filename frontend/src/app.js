@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
+import Workouts from './pages/WorkoutLog';
 import Error404 from './pages/Error404';
 import Navbar from './components/Navbar';
 import CurrentUserProvider from './context/CurrentUser';
@@ -21,6 +22,7 @@ function App() {
           <Route exact path='/signup' element={<Signup/>}/>
           <Route exact path='/profile' element={<Profile/>}/>
           <Route exact path='/meals' element={<MealLog/>}/>
+          <Route exact path='/workouts' element={<Workouts/>}/>
           <Route path='/*' element={<Error404 />} />
         </Routes>
     </CurrentUserProvider>

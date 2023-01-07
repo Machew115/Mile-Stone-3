@@ -1,25 +1,40 @@
 const workoutRouter = require('express').Router()
 const db = require('../models');
+const { Op } = require('sequelize');
 
 const{Workouts} = db
 
-workoutRouter.get('/user/:id',async(req,res)=>{
-    const userid = (req.params.id);
-    const userWork = await Workouts.findAll({
-        where: {workout_user_id: userid}
-    })
-    res.json(userWork)
-})
 
-workoutRouter.get('/user/:id/date/:date', async(req,res)=> {
-    const userid = (req.params.id);
-    const selectDate = (req.params.date);
-    const userWork = await Workouts.findOne({
-        where: {workout_user_id: userid},
-        where: {workout_date: selectDate}
-    })
-    res.json(userWork)
-})
+workoutRouter.get('/', async(req,res)=> {
+    console.log(req.query)
+    try {
+        //get user id and date from query string
+        const { workout_user_id, workout_date } = req.query;
+
+        //convert the workout_date string to a Date object
+        const startDate = new Date(workout_date);
+
+        //set the day of the month for the end date to be the day after the start date
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + 1);
+
+        //find all meals that match user id and date
+        const workouts = await Workouts.findAll({
+            where: {
+                workout_user_id: workout_user_id,
+                workout_date: {
+                    [Op.between]: [startDate, endDate]
+                }
+                }
+        });
+
+        //send the workou data as a response
+        res.json(workouts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred'})
+    }
+});
 
 workoutRouter.post('/user/:id/create', async(req,res) => {
     const workout_user_id = (req.params.id)
