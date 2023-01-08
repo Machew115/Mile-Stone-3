@@ -18,10 +18,11 @@ body #nav #logo #heart {
 body #nav #logo a {
   font-size: 32px;
   line-height: 1.5;
-  color: #dadada;
+  color: #000000;
 }
 body #nav #logo a:hover {
-  background-color: #565e64;
+  color: #1cd4ff;
+  background-color: transparent;
 }
 body #nav #user-menu {
   display: flex;
@@ -37,6 +38,12 @@ body #nav #user-menu #dropdown {
   overflow: hidden;
   flex: none;
 }
+body #nav #user-menu #dropdown::after {
+  color: #000000;
+}
+body #nav #user-menu #dropdown:hover::after {
+  color: #1cd4ff;
+}
 body #nav #user-menu ul {
   left: auto;
   right: 0;
@@ -46,6 +53,9 @@ body #meal-log {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+body #meal-log .titles {
+  background-color: #dadada;
 }
 body #meal-log input[type=date i] {
   border: none;
@@ -68,6 +78,9 @@ body #meal-log #list .list-group-item {
 body #meal-log #list .btn-danger, body #meal-log #list .btn-warning {
   width: 12.5%;
 }
+body #meal-log #list .btn-danger:hover, body #meal-log #list .btn-warning:hover {
+  color: #1cd4ff;
+}
 body #meal-log #list .edit-box {
   display: flex;
   flex-wrap: nowrap;
@@ -80,17 +93,32 @@ body #meal-log #list .edit-box #new-edit, body #meal-log #list .edit-box #save-b
   text-align: center;
   width: 12.5%;
 }
+body #meal-log #list .edit-box #save-btn:hover {
+  color: #1cd4ff;
+}
 body #meal-log #save-btn, body #meal-log .btn-danger, body #meal-log .btn-warning {
   color: #000000;
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
+body #meal-log .btn-secondary {
+  border: none;
+  background-color: #dadada;
+  color: #000000;
+}
+body #meal-log .btn-secondary:hover {
+  color: #1cd4ff;
+  background-color: #6d757d;
+}
 body .add-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+body .add-form input {
+  text-align: center;
 }
 body #greet {
   font-size: 18px;

@@ -36,7 +36,7 @@ function MealEdit({ meal }) {
 
     return(
         <div className='w-100 edit-box mt-2'>
-            <p id='new-edit'> New Edit </p>
+            <p id='new-edit' className='fw-bold'> New Edit </p>
             <ul className='list-group list-group-horizontal justify-content-center w-75' id='input'>
                 <li className='list-group-item w-100 text-nowrap'>
                     <input
@@ -79,7 +79,7 @@ function MealEdit({ meal }) {
                     />
                 </li>
             </ul>
-            <button onClick={handleSubmit} className='btn btn-secondary' id='save-btn'>Save</button>
+            <button onClick={handleSubmit} className='btn btn-secondary fw-bold' id='save-btn'>Save</button>
         </div>
     )
 

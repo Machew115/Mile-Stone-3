@@ -36,49 +36,66 @@ function MealForm(props) {
     };
 
     return (
-        <form className="add-form" onSubmit={handleSubmit}>
-            <label htmlFor="description">Description:</label>
-            <input
-                type="text"
-                id="description"
-                value={description}
-                onChange={(event) => setDescription(event.target.value)}
-            />
-            <br />
-            <label htmlFor="calories">Calories:</label>
-            <input
-                type="number"
-                id="calories"
-                value={calories}
-                onChange={(event) => setCalories(event.target.value)}
-            />
-            <br />
-            <label htmlFor="protein">Protein (g):</label>
-            <input
-                type="number"
-                id="protein"
-                value={protein}
-                onChange={(event) => setProtein(event.target.value)}
-            />
-            <br />
-            <label htmlFor="fat">Fat (g):</label>
-            <input
-                type="number"
-                id="fat"
-                value={fat}
-                onChange={(event) => setFat(event.target.value)}
-            />
-            <br />
-            <label htmlFor="carbs">Carbs (g):</label>
-            <input
-                type="number"
-                id="carbs"
-                value={carbs}
-                onChange={(event) => setCarbs(event.target.value)}
-            />
-            <br />
-            <button type="submit" className='btn btn-secondary'>Add Meal</button>
-        </form>
+        <div className="modal fade" id="form-modal" tabIndex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h2 className="modal-title fs-5 fw-bold" id="formModalLabel">New Meal</h2>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                    <form className="add-form" onSubmit={handleSubmit}>
+                        <label htmlFor="description" className="fw-bold">Description:</label>
+                        <input
+                            type="text"
+                            id="description"
+                            className="w-50"
+                            value={description}
+                            onChange={(event) => setDescription(event.target.value)}
+                        />
+                        <br />
+                        <label htmlFor="calories" className="fw-bold">Calories:</label>
+                        <input
+                            type="number"
+                            id="calories"
+                            className="w-50"
+                            value={calories}
+                            onChange={(event) => setCalories(event.target.value)}
+                        />
+                        <br />
+                        <label htmlFor="protein" className="fw-bold">Protein (g):</label>
+                        <input
+                            type="number"
+                            id="protein"
+                            className="w-50"
+                            value={protein}
+                            onChange={(event) => setProtein(event.target.value)}
+                        />
+                        <br />
+                        <label htmlFor="fat" className="fw-bold">Fat (g):</label>
+                        <input
+                            type="number"
+                            id="fat"
+                            className="w-50"
+                            value={fat}
+                            onChange={(event) => setFat(event.target.value)}
+                        />
+                        <br />
+                        <label htmlFor="carbs" className="fw-bold">Carbs (g):</label>
+                        <input
+                            type="number"
+                            id="carbs"
+                            className="w-50"
+                            value={carbs}
+                            onChange={(event) => setCarbs(event.target.value)}
+                        />
+                        <br />
+                        <button type="submit" className='btn btn-secondary fw-bold'>Add Meal</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
     );
 };
 

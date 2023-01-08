@@ -72,18 +72,18 @@ function MealLog() {
     return (
         <div id="meal-log" className='w-100 px-2 mt-2'>
             {/* Date picker to allow the user to select the date */}
-            { currentUser ? <input className="px-2" type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} /> : null}
+            { currentUser ? <input className="px-2 fw-bold" type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} /> : null}
             {/* display the meal entries */}
             <ul className="list-group list-group-horizontal justify-content-center w-75 mt-2">
-                <li className="list-group-item w-100">Description</li>
-                <li className="list-group-item w-100">Calories(kcal)</li>
-                <li className="list-group-item w-100">Protein(g)</li>
-                <li className="list-group-item w-100">Fat(g)</li>
-                <li className="list-group-item w-100">Carbs(g)</li>
+                <li className="list-group-item w-100 fw-bold titles">Description</li>
+                <li className="list-group-item w-100 fw-bold titles">Calories(kcal)</li>
+                <li className="list-group-item w-100 fw-bold titles">Protein(g)</li>
+                <li className="list-group-item w-100 fw-bold titles">Fat(g)</li>
+                <li className="list-group-item w-100 fw-bold titles">Carbs(g)</li>
             </ul>
             {displayedMeals.map((meal) => (
                 <div key={meal.meal_id} className="w-100 mt-2" id="list">
-                    <button onClick={() => displayForm(meal.meal_id)} className='btn btn-warning'>Edit</button>
+                    <button onClick={() => displayForm(meal.meal_id)} className='btn btn-warning fw-bold'>Edit</button>
                     <ul className="list-group list-group-horizontal justify-content-center w-75">
                         <li className='list-group-item w-100 text-nowrap'>{meal.meal_description}</li>
                         <li className='list-group-item w-100 text-nowrap'>{meal.meal_calories} (kcal)</li>
@@ -91,12 +91,12 @@ function MealLog() {
                         <li className='list-group-item w-100 text-nowrap'>{meal.fat} (g)</li>
                         <li className='list-group-item w-100 text-nowrap'>{meal.carbs} (g)</li>
                     </ul>
-                    <button onClick={() => deleteMeal(meal.meal_id)} className='btn btn-danger'>Delete</button>
+                    <button onClick={() => deleteMeal(meal.meal_id)} className='btn btn-danger fw-bold'>Delete</button>
                     {editingMealId === meal.meal_id && display ? <MealEdit meal={meal} /> : null}
                 </div>
             ))}
-            { !addDisplay && currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-2'> Add Meal </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-1'>-</button> : null}
-            { addDisplay ? <MealForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
+            { !addDisplay && currentUser ? <button className='btn btn-secondary mt-2 fw-bold' data-bs-toggle="modal" data-bs-target="#form-modal"> Add Meal </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-1'>-</button> : null}
+            { currentUser ? <MealForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
         </div>
     );
 }  
