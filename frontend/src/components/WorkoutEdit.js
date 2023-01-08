@@ -8,7 +8,7 @@ function WorkoutEdit({ workout }) {
     const [Reps, setReps] = useState(workout.workout_reps);
     const [Weight, setWeight] = useState(workout.workout_weight);
     const [Duration, setDuration] = useState(workout.workout_duration);
-
+    
     //Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,7 +22,7 @@ function WorkoutEdit({ workout }) {
         workout_weight: Weight,
         workout_duration: Duration,
     };
-console.log(workout.workout_weight)
+
     //send the new workout object to the server with a Post request 
     fetch(`http://localhost:5500/workouts/${workout.workout_id}`, {
         method: 'PUT',
@@ -31,7 +31,7 @@ console.log(workout.workout_weight)
     });
 
     // reload page after
-  //  window.location.reload()
+    window.location.reload()
 };
 
         return(
@@ -39,6 +39,7 @@ console.log(workout.workout_weight)
             <th scope='row'></th>
             <td>
                 <input
+                    className='w-50'
                     type="text"
                     id="Muscle Group"
                     value={MuscleGroup}
@@ -60,7 +61,7 @@ console.log(workout.workout_weight)
                     type="number"
                     id="sets"
                     value={Sets}
-                    onChange={(event) => setSets(event.target.value)}
+                    onChange={(event) => setSets(parseInt(event.target.value))}
                 />
             </td>
             <td>
@@ -69,7 +70,7 @@ console.log(workout.workout_weight)
                     type="number"
                     id="reps"
                     value={Reps}
-                    onChange={(event) => setReps(event.target.value)}
+                    onChange={(event) => setReps(parseInt(event.target.value))}
                 />
             </td>
             <td>
@@ -78,7 +79,7 @@ console.log(workout.workout_weight)
                     type="number"
                     id="weight"
                     value={Weight}
-                    onChange={(event) => setWeight(event.target.value)}
+                    onChange={(event) => setWeight(parseInt(event.target.value))}
                 />
             </td>
             <td>

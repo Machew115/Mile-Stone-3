@@ -47,7 +47,6 @@ function WorkoutLog() {
 
         // create a date string from the workout's date
         if (!acc[date]) {
-            console.log('test')
             // if there is no key for the date in the accumulator object yet, create one
             acc[date] = [workout];
         } else {
@@ -61,7 +60,7 @@ function WorkoutLog() {
 
     // Use the selected date to filter the data being displayed
     const displayedWorkouts = groupedWorkouts[selectedDate] || [];
-console.log(displayedWorkouts)
+
     const displayForm = (workout) => {
         setEditingWorkoutId(workout);
         (display) ? setAddDisplay(false) : setDisplay(true)
@@ -70,7 +69,7 @@ console.log(displayedWorkouts)
     const displayAddForm = () => {
         !addDisplay ? setAddDisplay(true) : setAddDisplay(false)
     }
-console.log()
+
     return (
         <div id="meal-log" className='table-responsive'>
             {/* Date picker to allow the user to select the date */}

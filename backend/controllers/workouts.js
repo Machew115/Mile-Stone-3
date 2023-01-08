@@ -40,9 +40,9 @@ workoutRouter.post('/', async(req,res) => {
    try {
     // recieve workout data from request body
    const {workout_user_id, workout_date, workout_muscle_group, workout_exercise,
-     workout_sets, workout_reps, workout_weight, workout_duration} = req.body
+     workout_sets, workout_reps, workout_weight, workout_duration} = req.body;
 
-     //create new workout data to 
+    // create new workout data to 
     const newWorkout = await Workouts.create({
         workout_user_id,
         workout_date,
@@ -58,25 +58,21 @@ workoutRouter.post('/', async(req,res) => {
     } catch (error){
     res.status(500).json({ message: 'An error occured'});
     }
-})
+});
 
 workoutRouter.put('/:id', async(req,res) =>{
-    //console.log(req.body)
     try{
         //get workout id from params
-    const {id} = (req.params.id);
-
+        const {id} = req.params;
+        
         // get updated data from the request body
-    const {workout_muscle_group, workout_exercise, workout_sets, workout_reps, workout_weight, workout_duration} =req.body;
-
+        const {workout_muscle_group, workout_exercise, workout_sets, workout_reps, workout_weight, workout_duration} =req.body;
+        
+        //console.log(req.body)
         // find the workout with a matching id
     const workout = await Workouts.findByPk(id);
-
         // update the workout with new data
-    await Workouts.update({
-        workout_muscle_group, workout_exercise, workout_sets,
-        workout_reps, workout_weight, workout_duration
-    });
+    await workout.update({ workout_muscle_group, workout_exercise, workout_sets, workout_reps, workout_weight, workout_duration});
 
         //send update workout data as a response
     res.json(workout)
@@ -94,7 +90,7 @@ workoutRouter.delete('/:id', async (req,res) => {
     const workout = await Workouts.findByPk(id);
 
         // delete the workout
-    await Workouts.destroy();
+    await workout.destroy();
 
         // send a response indicating that the workout data was deleted successfully
     res.sendStatus(200);

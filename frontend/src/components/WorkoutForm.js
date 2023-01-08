@@ -8,10 +8,12 @@ function WorkoutForm(props) {
     const [Reps, setReps] = useState(0);
     const [Weight, setWeight] = useState(0);
     const [Duration, setDuration] = useState('');
-
+    const date = new Date(props.selectedDate)
+    date.setMinutes(30)
+console.log(Weight)
     //Handle form submission
     const handleSubmit = (event) => {
-        event.preventDafault();
+        event.preventDefault();
 
     // create a new workout objects
     const newWorkout = {
@@ -22,7 +24,7 @@ function WorkoutForm(props) {
         workout_weight: Weight,
         workout_duration: Duration,
         workout_user_id: props.user_id,
-        workout_date: props.selectedDate
+        workout_date: date
     };
     //send the new workout object to the server with a Post request 
     fetch(`http://localhost:5500/workouts`, {
@@ -39,6 +41,7 @@ function WorkoutForm(props) {
         <form className="add-form" onSubmit={handleSubmit}>
             <label htmlFor="muscle Group">MuscleGroup:</label>
             <input
+                placeholder=' '
                 type="text"
                 id="Muscle Group"
                 value={MuscleGroup}
@@ -47,6 +50,7 @@ function WorkoutForm(props) {
             <br />
             <label htmlFor="exercise">Exercise:</label>
             <input
+                placeholder=' '
                 type="text"
                 id="exercise"
                 value={Exercise}
@@ -55,6 +59,7 @@ function WorkoutForm(props) {
             <br />
             <label htmlFor="sets">Sets:</label>
             <input
+                placeholder=' '
                 type="number"
                 id="Sets"
                 value={Sets}
@@ -63,6 +68,7 @@ function WorkoutForm(props) {
             <br />
             <label htmlFor="reps">Reps:</label>
             <input
+                placeholder=' '
                 type="number"
                 id="reps"
                 value={Reps}
@@ -71,6 +77,7 @@ function WorkoutForm(props) {
             <br />
             <label htmlFor="weight">Weight (lb):</label>
             <input
+                placeholder=' '
                 type="number"
                 id="weight"
                 value={Weight}
@@ -79,6 +86,7 @@ function WorkoutForm(props) {
             <br />
             <label htmlFor="duration">Duration:</label>
             <input
+                placeholder=' '
                 type="text"
                 id="duration"
                 value={Duration}
