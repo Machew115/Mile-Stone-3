@@ -8,6 +8,8 @@ function MealForm(props) {
     const [protein, setProtein] = useState(0);
     const [fat, setFat] = useState(0);
     const [carbs, setCarbs] = useState(0);
+    const date = new Date(props.selectedDate)
+    date.setMinutes(30)
 
     // Handle form submission
     const handleSubmit = (event) => {
@@ -21,7 +23,7 @@ function MealForm(props) {
             fat: fat,
             carbs: carbs,
             meal_user_id: props.user_id,
-            meal_date: props.selectedDate
+            meal_date: date,
         };
 
         // Send the new meal object to the server using a POST request
