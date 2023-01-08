@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             {currentUser ? (
                 <div>
-                    <p id='greet' className='fw-bold'>Welcome, {currentUser.user_f_name}!</p>
+                    <p id='greet' className='fw-bold'>Welcome, {currentUser.user.user_f_name}!</p>
                     <p id='greet' className='fw-bold'>You are logged in</p>
                 </div>
             ) : (
