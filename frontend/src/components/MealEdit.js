@@ -35,54 +35,52 @@ function MealEdit({ meal }) {
 
 
     return(
-        <tr>
-            <th scope='row'></th>
-            <td>
-                <input
-                    type="text"
-                    id="description"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="calories"
-                    value={calories}
-                    onChange={(event) => setCalories(event.target.value)}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="protein"
-                    value={protein}
-                    onChange={(event) => setProtein(event.target.value)}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="fat"
-                    value={fat}
-                    onChange={(event) => setFat(event.target.value)}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="carbs"
-                    value={carbs}
-                    onChange={(event) => setCarbs(event.target.value)}
-                />
-            </td>
-            <td onClick={handleSubmit} className='btn btn-secondary w-100' id='save-btn'>Save</td>
-        </tr>
+        <div className='w-100 edit-box mt-2'>
+            <p id='new-edit' className='fw-bold'> New Edit </p>
+            <ul className='list-group list-group-horizontal justify-content-center w-75' id='input'>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        type="text"
+                        id="description"
+                        value={description}
+                        onChange={(event) => setDescription(event.target.value)}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        type="number"
+                        id="calories"
+                        value={calories}
+                        onChange={(event) => setCalories(event.target.value)}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        type="number"
+                        id="protein"
+                        value={protein}
+                        onChange={(event) => setProtein(event.target.value)}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        type="number"
+                        id="fat"
+                        value={fat}
+                        onChange={(event) => setFat(event.target.value)}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        type="number"
+                        id="carbs"
+                        value={carbs}
+                        onChange={(event) => setCarbs(event.target.value)}
+                    />
+                </li>
+            </ul>
+            <button onClick={handleSubmit} className='btn btn-secondary fw-bold' id='save-btn'>Save</button>
+        </div>
     )
 
 }
