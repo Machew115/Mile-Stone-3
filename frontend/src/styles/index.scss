@@ -144,22 +144,28 @@ body {
             cursor: pointer;
         }
 
-        .btn-secondary {
-            border: none;
-            background-color: #dadada;
-            color: #000000;
+    }
 
-            &:hover {
-                color: $color-primary;
-                background-color: #6d757d;
-            }
+    .btn-secondary {
+        border: none;
+        background-color: #dadada;
+        color: #000000;
+
+        &:hover {
+            color: $color-primary;
+            background-color: #6d757d;
         }
+    }
+    
+    #greet {
+        font-size: $font-size;
+        text-align: center;
     }
 
     .add-form {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         margin: auto;
 
@@ -202,11 +208,12 @@ body {
                 background-color: #ffffff;
             } 
         }
-    }
 
-    #greet {
-        font-size: $font-size;
-        text-align: center;
+        .show-pw {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
     }
 }
 

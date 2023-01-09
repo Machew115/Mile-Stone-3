@@ -102,19 +102,23 @@ body #meal-log #save-btn, body #meal-log .btn-danger, body #meal-log .btn-warnin
   background-color: transparent;
   cursor: pointer;
 }
-body #meal-log .btn-secondary {
+body .btn-secondary {
   border: none;
   background-color: #dadada;
   color: #000000;
 }
-body #meal-log .btn-secondary:hover {
+body .btn-secondary:hover {
   color: #1cd4ff;
   background-color: #6d757d;
+}
+body #greet {
+  font-size: 18px;
+  text-align: center;
 }
 body .add-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
 }
@@ -163,9 +167,10 @@ body .add-form .input-hold .input_:not(:placeholder-shown).input_:not(:focus) ~ 
   left: 0.6rem;
   background-color: #ffffff;
 }
-body #greet {
-  font-size: 18px;
-  text-align: center;
+body .add-form .show-pw {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .profile {

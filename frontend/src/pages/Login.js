@@ -58,37 +58,45 @@ function Login() {
     }, [credentials.user_email, credentials.user_password]);
 
     return (
-        <form>
-        {error && <p>{error}</p>}
-        <label htmlFor='user_email'>Username (user your email address): </label>
-            <input
-            type="text"
-            required
-            placeholder='email'
-            name = 'user_email'
-            id='user_email'
-            value={credentials.user_email}
-            onChange={(event) => setCredentials({...credentials,user_email:event.target.value})}
+        <form className='add-form w-50 mt-4'>
+            <h1> Login </h1>
+            <div className='input-hold w-50 mt-3'> 
+            {error && <p>{error}</p>}
+                <input
+                className='w-100 input_'
+                type='text'
+                required
+                placeholder=' '
+                name = 'user_email'
+                id='user_email'
+                value={credentials.user_email}
+                onChange={(event) => setCredentials({...credentials,user_email:event.target.value})}
             />
-        
-        <br />
-        <label htmlFor='user_password'> Password: </label>
-        <input 
-            type={showPassword ? "text" : "password"} 
-            required
-            placeholder='password'
-            name="user_password"
-            id='user_password' 
-            value={credentials.user_password}
-            onChange={(event) => setCredentials({...credentials,user_password:event.target.value})}
+            <label className='fw-bold _label' htmlFor='user_email'>Email:</label>
+            </div>
+            
+            <br />
+            <div className='input-hold w-50'>
+            <input 
+                className='w-100 input_'
+                type={showPassword ? "text" : "password"} 
+                required
+                placeholder=' '
+                name="user_password"
+                id='user_password' 
+                value={credentials.user_password}
+                onChange={(event) => setCredentials({...credentials,user_password:event.target.value})}
             />
- 
-        <br />
-        {/* Add a checkbox input field and bind it to the showPassword state variable */}
-        <input type="checkbox" checked={showPassword} onChange={e => setShowPassword(e.target.checked)} />
-        Show Password
-        
-        <button type="submit" onClick={handleSubmit}>Log in</button>
+            <label htmlFor='user_password'className='fw-bold _label'> Password:</label>
+            </div>
+            <br />
+            {/* Add a checkbox input field and bind it to the showPassword state variable */}
+            <div className='show-pw w-50'>
+                <input type="checkbox" id='show-pw' checked={showPassword} onChange={e => setShowPassword(e.target.checked)} />
+                <label htmlFor='show-pw' className='px-2'>Show Password</label>
+            </div>
+            
+            <button className='btn btn-secondary mt-4 w-50' type="submit" onClick={handleSubmit}>Login</button>
         </form>
     );
 }
