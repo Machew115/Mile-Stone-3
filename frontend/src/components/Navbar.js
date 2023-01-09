@@ -8,9 +8,9 @@ const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg px-2" id='nav'>
-            <div id='logo'>
-                <a className="navbar-brand fw-bold" href="/">Fit Track</a>
+        <nav className="navbar navbar-expand-lg px-2 w-100" id='nav'>
+            <div id='logo' className='px-3'>
+                <a className="navbar-brand fw-bold" href="/"><i>FitTrack</i></a>
                 <img id='heart' className='px-2' alt='heart and pulse' src='./heart-beat-icon.png'></img>
             </div>
             {currentUser ? (
@@ -21,8 +21,9 @@ const Navbar = () => {
                     </button>
                     <ul className="dropdown-menu px-2">
                         {/* following href routes to be changed later to respective routes*/}
-                        <li><a className="dropdown-item" href="/">Workout Log</a></li>
+                        <li><a className="dropdown-item" href="/workouts">Workout Log</a></li>
                         <li><a className="dropdown-item" href="/meals">Food Log</a></li>
+                        <li><a className="dropdown-item" href="/">Calculators</a></li> {/* to implement later */}
                         <li><a className="dropdown-item" href="/profile">Profile</a></li>
                         <LogoutBtn/>
                     </ul>

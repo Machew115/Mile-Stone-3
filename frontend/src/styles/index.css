@@ -18,10 +18,11 @@ body #nav #logo #heart {
 body #nav #logo a {
   font-size: 32px;
   line-height: 1.5;
-  color: #dadada;
+  color: #000000;
 }
 body #nav #logo a:hover {
-  background-color: #565e64;
+  color: #1cd4ff;
+  background-color: transparent;
 }
 body #nav #user-menu {
   display: flex;
@@ -37,6 +38,12 @@ body #nav #user-menu #dropdown {
   overflow: hidden;
   flex: none;
 }
+body #nav #user-menu #dropdown::after {
+  color: #000000;
+}
+body #nav #user-menu #dropdown:hover::after {
+  color: #1cd4ff;
+}
 body #nav #user-menu ul {
   left: auto;
   right: 0;
@@ -47,18 +54,163 @@ body #meal-log {
   justify-content: center;
   align-items: center;
 }
+body #meal-log .titles {
+  background-color: #dadada;
+}
+body #meal-log input[type=date i] {
+  border: none;
+}
+body #meal-log #list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body #meal-log #list #input {
+  margin: auto;
+}
+body #meal-log #list #input input {
+  border: none;
+  width: 100%;
+}
+body #meal-log #list .list-group-item {
+  overflow-x: scroll;
+}
+body #meal-log #list .btn-danger, body #meal-log #list .btn-warning {
+  width: 12.5%;
+}
+body #meal-log #list .btn-danger:hover, body #meal-log #list .btn-warning:hover {
+  color: #1cd4ff;
+}
+body #meal-log #list .edit-box {
+  display: flex;
+  flex-wrap: nowrap;
+}
+body #meal-log #list .edit-box .list-group-item {
+  overflow: auto;
+}
+body #meal-log #list .edit-box #new-edit, body #meal-log #list .edit-box #save-btn {
+  margin: auto;
+  text-align: center;
+  width: 12.5%;
+}
+body #meal-log #list .edit-box #save-btn:hover {
+  color: #1cd4ff;
+}
 body #meal-log #save-btn, body #meal-log .btn-danger, body #meal-log .btn-warning {
   color: #000000;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
+}
+body .btn-secondary {
+  border: none;
+  background-color: #dadada;
+  color: #000000;
+}
+body .btn-secondary:hover {
+  color: #1cd4ff;
+  background-color: #6d757d;
+}
+body #greet {
+  font-size: 18px;
+  text-align: center;
 }
 body .add-form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+body .add-form .input-hold {
+  position: relative;
+  display: flex;
   justify-content: center;
+}
+body .add-form .input-hold input {
+  padding: 0.5rem;
+  border-color: #6d757d;
+  border-style: solid;
+  border-radius: 0.5rem;
+  text-align: left;
+  cursor: text;
+}
+body .add-form .input-hold input:hover {
+  border-color: #1cd4ff;
+  cursor: text;
+}
+body .add-form .input-hold ._label {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 0 0.25rem;
+  left: 1rem;
+  top: 0.6rem;
+  cursor: text;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+body .add-form .input-hold .input_:not(:-moz-placeholder-shown).input_:not(:focus) ~ ._label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  left: 0.6rem;
+  background-color: #ffffff;
+}
+body .add-form .input-hold .input_:not(:-ms-input-placeholder).input_:not(:focus) ~ ._label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  left: 0.6rem;
+  background-color: #ffffff;
+}
+body .add-form .input-hold .input_:focus ~ ._label,
+body .add-form .input-hold .input_:not(:placeholder-shown).input_:not(:focus) ~ ._label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  left: 0.6rem;
+  background-color: #ffffff;
+}
+body .add-form .input-hold .search {
+  position: absolute;
+  width: 20px;
+  height: auto;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+body .add-form .show-pw {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+body .add-form .show-pw .sign-up {
+  color: #000000;
+  position: absolute;
+  text-decoration: none;
+  right: 0;
+  text-align: center;
+}
+body .add-form .show-pw .sign-up:hover {
+  color: #1cd4ff;
+}
+body main h1 {
+  text-align: center;
+}
+body main .links {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
-body #greet {
-  font-size: 18px;
+body main .links .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+body main .links .link:hover {
+  transform: scale(1.2);
+}
+body main .links h2 {
   text-align: center;
 }
 

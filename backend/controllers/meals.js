@@ -39,7 +39,6 @@ mealsRouter.post('/', async (req, res) => {
     try {
         // get the meal data from the request body
         const {meal_user_id, meal_description, meal_calories, protein, fat, carbs, meal_date} = req.body;
-        
         // create a new meal using the data
         const newMeal = await db.Meals.create({
             meal_user_id,
@@ -101,3 +100,4 @@ mealsRouter.delete('/:id', async (req, res) => {
 });
 
 module.exports = mealsRouter
+
