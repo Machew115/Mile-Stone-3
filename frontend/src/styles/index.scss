@@ -156,7 +156,7 @@ body {
             background-color: #6d757d;
         }
     }
-    
+
     #greet {
         font-size: $font-size;
         text-align: center;
@@ -213,6 +213,19 @@ body {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            position: relative;
+
+            .sign-up {
+                color: #000000;
+                position: absolute;
+                text-decoration: none;
+                right: 0;
+                text-align: center;
+
+                &:hover {
+                    color: $color-primary;
+                }
+            }
         }
     }
 }

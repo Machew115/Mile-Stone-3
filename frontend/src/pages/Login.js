@@ -94,9 +94,10 @@ function Login() {
             <div className='show-pw w-50'>
                 <input type="checkbox" id='show-pw' checked={showPassword} onChange={e => setShowPassword(e.target.checked)} />
                 <label htmlFor='show-pw' className='px-2'>Show Password</label>
+                <a className='sign-up fw-bold' href='/signup'>Sign Up?</a>
             </div>
             
-            <button className='btn btn-secondary mt-4 w-50' type="submit" onClick={handleSubmit}>Login</button>
+            <button className='btn btn-secondary mt-4 w-50 fw-bold' type="submit" onClick={handleSubmit}>Login</button>
         </form>
     );
 }

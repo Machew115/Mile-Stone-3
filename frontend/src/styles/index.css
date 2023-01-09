@@ -171,6 +171,17 @@ body .add-form .show-pw {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
+}
+body .add-form .show-pw .sign-up {
+  color: #000000;
+  position: absolute;
+  text-decoration: none;
+  right: 0;
+  text-align: center;
+}
+body .add-form .show-pw .sign-up:hover {
+  color: #1cd4ff;
 }
 
 .profile {
