@@ -7,7 +7,8 @@ module.exports={
       "database": process.env.DB_DATABASE,
       "host": "fitness-tracker.ceyn1sqqjawo.us-west-2.rds.amazonaws.com",
       "port":5432,
-      "dialect": "postgres"
+      "dialect": "postgres",
+      "logging": false
     },
     "test": {
       "username": process.env.DB_USERNAME,

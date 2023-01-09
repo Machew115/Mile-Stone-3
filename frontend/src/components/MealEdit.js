@@ -23,6 +23,7 @@ function MealEdit({ meal }) {
         };
 
         // Send the new meal object to the server using a POST request
+
         fetch(`http://localhost:5000/meals/${meal.meal_id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
