@@ -10,7 +10,6 @@ function WorkoutForm(props) {
     const [Duration, setDuration] = useState('');
     const date = new Date(props.selectedDate)
     date.setMinutes(30)
-console.log(Weight)
     //Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,7 +26,7 @@ console.log(Weight)
         workout_date: date
     };
     //send the new workout object to the server with a Post request 
-    fetch(`http://localhost:5500/workouts`, {
+    fetch(`http://localhost:5000/workouts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newWorkout),
@@ -38,63 +37,87 @@ console.log(Weight)
     };
 
     return (
-        <form className="add-form" onSubmit={handleSubmit}>
-            <label htmlFor="muscle Group">MuscleGroup:</label>
-            <input
-                placeholder=' '
-                type="text"
-                id="Muscle Group"
-                value={MuscleGroup}
-                onChange={(event) => setMuscleGroup(event.target.value)}
-            />
-            <br />
-            <label htmlFor="exercise">Exercise:</label>
-            <input
-                placeholder=' '
-                type="text"
-                id="exercise"
-                value={Exercise}
-                onChange={(event) => setExercise(event.target.value)}
-            />
-            <br />
-            <label htmlFor="sets">Sets:</label>
-            <input
-                placeholder=' '
-                type="number"
-                id="Sets"
-                value={Sets}
-                onChange={(event) => setSets(event.target.value)}
-            />
-            <br />
-            <label htmlFor="reps">Reps:</label>
-            <input
-                placeholder=' '
-                type="number"
-                id="reps"
-                value={Reps}
-                onChange={(event) => setReps(event.target.value)}
-            />
-            <br />
-            <label htmlFor="weight">Weight (lb):</label>
-            <input
-                placeholder=' '
-                type="number"
-                id="weight"
-                value={Weight}
-                onChange={(event) => setWeight(event.target.value)}
-            />
-            <br />
-            <label htmlFor="duration">Duration:</label>
-            <input
-                placeholder=' '
-                type="text"
-                id="duration"
-                value={Duration}
-                onChange={(event) => setDuration(event.target.value)}
-            />
-            <br />
-            <button type="submit" className='btn btn-secondary'>Add Workout</button>
-        </form>
+        <div className="modal fade w-100 position-absolute top-50 start-50 translate-middle" id="form-modal" tabIndex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div className="modal-dialog w-50">
+                <div className="modal-content w-100">
+                    <div className="modal-header">
+                        <h2 className="modal-title fs-5 fw-bold" id="formModalLabel">New Workout</h2>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body w-100">
+                        <form className="add-form w-50" onSubmit={handleSubmit}>
+                            <div className='w-100 input-hold'>
+                                <input
+                                    placeholder=' '
+                                    type="text"
+                                    id="Muscle Group"
+                                    className="w-100 input_"
+                                    onChange={(event) => setMuscleGroup(event.target.value)}
+                                />
+                                <label className="fw-bold _label" htmlFor="muscle Group">MuscleGroup:</label>
+                            </div>
+                            <br />
+                            <div className='w-100 input-hold'>
+                                <input
+                                    placeholder=' '
+                                    type="text"
+                                    id="exercise"
+                                    className="w-100 input_"
+                                    onChange={(event) => setExercise(event.target.value)}
+                                />
+                                <label className="fw-bold _label" htmlFor="exercise">Exercise:</label>
+                            </div>
+                            <br />
+                            <div className='w-100 input-hold'>
+                                <input
+                                    placeholder=' '
+                                    type="number"
+                                    id="Sets"
+                                    className="w-100 input_"
+                                    onChange={(event) => setSets(event.target.value)}
+                                />
+                                <label className="fw-bold _label" htmlFor="sets">Sets:</label>
+                            </div>
+                            <br />
+                            <div className='w-100 input-hold'>
+                                <input
+                                    placeholder=' '
+                                    type="number"
+                                    id="reps"
+                                    className="w-100 input_"
+                                    onChange={(event) => setReps(event.target.value)}
+                                />
+                                <label className="fw-bold _label" htmlFor="reps">Reps:</label>
+                            </div>
+                            <br />
+                            <div className='w-100 input-hold'>
+                                <input
+                                    placeholder=' '
+                                    type="number"
+                                    id="weight"
+                                    className="w-100 input_"
+                                    onChange={(event) => setWeight(event.target.value)}
+                                />
+                                <label className="fw-bold _label" htmlFor="weight">Weight (lb):</label>
+                            </div>
+                            <br />
+                            <div className='w-100 input-hold'>
+                                <input
+                                    placeholder=' '
+                                    type="text"
+                                    id="duration"
+                                    className="w-100 input_"
+                                    onChange={(event) => setDuration(event.target.value)}
+                                />
+                                <label className="fw-bold _label" htmlFor="duration">Duration:</label>
+                            </div>
+                            <br />
+                            <button type="submit" className='btn btn-secondary'>Add Workout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 
