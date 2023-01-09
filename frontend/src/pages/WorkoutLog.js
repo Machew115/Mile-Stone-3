@@ -13,11 +13,12 @@ function WorkoutLog() {
 
      // user context
      const {currentUser} = useContext(CurrentUser);
+
      useEffect(() => {
         if(currentUser) {
             // Fetch the workout data from the server and store it in the state
             async function fetchData() {
-                const response = await fetch(`http://localhost:5500/workouts?workout_user_id=${currentUser.user.user_id}&workout_date=${selectedDate}`); // route subject to change depending on server route
+                const response = await fetch(`http://localhost:5000/workouts?workout_user_id=${currentUser.user.user_id}&workout_date=${selectedDate}`); // route subject to change depending on server route
                 const data = await response.json();
                 setworkout(data);
                 
@@ -29,7 +30,7 @@ function WorkoutLog() {
      //Workout Delete request
      async function deleteWorkout(workoutId) {
         try {
-            await fetch(`http://localhost:5500/workouts/${workoutId}`, {
+            await fetch(`http://localhost:5000/workouts/${workoutId}`, {
                 method: 'DELETE',
             });
             // After the Delete request is complete, reload page
@@ -63,7 +64,7 @@ function WorkoutLog() {
 
     const displayForm = (workout) => {
         setEditingWorkoutId(workout);
-        (display) ? setAddDisplay(false) : setDisplay(true)
+        (display) ? setDisplay(false) : setDisplay(true)
     }
 
     const displayAddForm = () => {
@@ -71,42 +72,35 @@ function WorkoutLog() {
     }
 
     return (
-        <div id="meal-log" className='table-responsive'>
+        <div id="meal-log" className='w-100 px-2 mt-2'>
             {/* Date picker to allow the user to select the date */}
-            { currentUser ? <input className="px-2" type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} /> : null}
+            { currentUser ? <input className="px-2 fw-bold" type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} /> : null}
             {/* display the workout entries */}
-            <table className='table caption-top mx-auto'>
-                <caption>Workouts</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">MuscleGroup</th>
-                        <th scope="col">Exercise</th>
-                        <th scope="col">Sets</th>
-                        <th scope="col">Reps</th>
-                        <th scope="col">Weight</th>
-                        <th scope="col">Duration</th>
-                    </tr>
-                </thead>
-                {displayedWorkouts.map((workout) => (
-                    <tbody key={workout.workout_id}>
-                        <tr>
-                            <th scope='row'></th>
-                            <td>{workout.workout_muscle_group}</td>
-                            <td>{workout.workout_exercise}</td>
-                            <td>{workout.workout_sets}</td>
-                            <td>{workout.workout_reps}</td>
-                            <td>{workout.workout_weight} (pounds)</td>
-                            <td>{workout.workout_duration}</td>
-                            <td onClick={() => displayForm(workout.workout_id)} className='btn btn-warning w-100'>Edit</td>
-                            <td onClick={() => deleteWorkout(workout.workout_id)} className='btn btn-danger w-100'>Delete</td>
-                        </tr>
-                        {editingWorkoutId === workout.workout_id && display ? <WorkoutEdit workout={workout} /> : null}
-                    </tbody>
-                ))}
-            </table>
-            { !addDisplay && currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary'> Add Workout </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary'>-</button> : null}
-            { addDisplay ? <WorkoutForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
+            <ul className="list-group list-group-horizontal justify-content-center w-75 mt-2">
+                <li className="list-group-item w-100 fw-bold titles">Muscle</li>
+                <li className="list-group-item w-100 fw-bold titles">Exercise</li>
+                <li className="list-group-item w-100 fw-bold titles">Sets</li>
+                <li className="list-group-item w-100 fw-bold titles">Reps</li>
+                <li className="list-group-item w-100 fw-bold titles">Weight</li>
+                <li className="list-group-item w-100 fw-bold titles">Duration</li>
+            </ul>
+            {displayedWorkouts.map((workout) => (
+                <div key={workout.workout_id} className="w-100 mt-2" id="list">
+                    <button onClick={() => displayForm(workout.workout_id)} className='btn btn-warning fw-bold'>Edit</button>
+                    <ul className="list-group list-group-horizontal justify-content-center w-75">
+                        <li className='list-group-item w-100 text-nowrap'>{workout.workout_muscle_group}</li>
+                        <li className='list-group-item w-100 text-nowrap'>{workout.workout_exercise}</li>
+                        <li className='list-group-item w-100 text-nowrap'>{workout.workout_sets}</li>
+                        <li className='list-group-item w-100 text-nowrap'>{workout.workout_reps}</li>
+                        <li className='list-group-item w-100 text-nowrap'>{workout.workout_weight} (pounds)</li>
+                        <li className='list-group-item w-100 text-nowrap'>{workout.workout_duration}</li>
+                    </ul>
+                    <button onClick={() => deleteWorkout(workout.workout_id)} className='btn btn-danger fw-bold'>Delete</button>
+                    {editingWorkoutId === workout.workout_id && display ? <WorkoutEdit workout={workout} /> : null}
+                </div>
+            ))}
+            { !addDisplay && currentUser ? <button className='btn btn-secondary mt-2 fw-bold' data-bs-toggle="modal" data-bs-target="#form-modal"> Add Workout </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-1'>-</button> : null}
+            { currentUser ? <WorkoutForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
         </div>
     );
 }
