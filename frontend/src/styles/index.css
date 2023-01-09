@@ -167,6 +167,15 @@ body .add-form .input-hold .input_:not(:placeholder-shown).input_:not(:focus) ~ 
   left: 0.6rem;
   background-color: #ffffff;
 }
+body .add-form .input-hold .search {
+  position: absolute;
+  width: 20px;
+  height: auto;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
+  background-color: #ffffff;
+}
 body .add-form .show-pw {
   display: flex;
   justify-content: flex-start;
@@ -182,6 +191,27 @@ body .add-form .show-pw .sign-up {
 }
 body .add-form .show-pw .sign-up:hover {
   color: #1cd4ff;
+}
+body main h1 {
+  text-align: center;
+}
+body main .links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+body main .links .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+body main .links .link:hover {
+  transform: scale(1.2);
+}
+body main .links h2 {
+  text-align: center;
 }
 
 .profile {

@@ -207,6 +207,16 @@ body {
                 left: 0.6rem;
                 background-color: #ffffff;
             } 
+
+            .search {
+                position: absolute;
+                width: 20px;
+                height: auto;
+                top:0.7rem;
+                right: 0.7rem;
+                cursor: pointer;
+                background-color: #ffffff;
+            }
         }
 
         .show-pw {
@@ -225,6 +235,35 @@ body {
                 &:hover {
                     color: $color-primary;
                 }
+            }
+        }
+    }
+
+    main {
+
+        h1{
+            text-align: center;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 200ms ease-in-out;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+             
+            h2 {
+                text-align: center;
             }
         }
     }
