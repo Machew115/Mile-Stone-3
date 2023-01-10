@@ -257,6 +257,7 @@ body .btn-secondary {
 body .btn-secondary:hover {
   color: #1cd4ff;
   background-color: #6d757d;
+  color: #000000;
 }
 @media (max-width: 720px) {
   body .btn-secondary {
@@ -276,6 +277,7 @@ body .btn-secondary:hover {
 body #greet {
   font-size: 18px;
   text-align: center;
+  margin-top: 20px;
 }
 body .add-form {
   display: flex;
@@ -310,6 +312,7 @@ body .add-form .input-hold ._label {
   cursor: text;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 }
+
 @media (max-width: 720px) {
   body .add-form .input-hold ._label {
     font-size: 14px;
@@ -361,6 +364,7 @@ body .add-form .show-pw .sign-up:hover {
 }
 body main h1 {
   text-align: center;
+  margin-top: 20px;
 }
 @media (max-width: 720px) {
   body main h1 {
@@ -421,4 +425,12 @@ body main .links h2 {
   width: 150px;
   height: 150px;
   border-radius: 75px;
+
+}
+
+.img-rounded {
+  width: 65px;
+  height: 65px;
+  border-radius: 32px;
 }/*# sourceMappingURL=index.css.map */
+

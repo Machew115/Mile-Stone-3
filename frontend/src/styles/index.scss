@@ -274,6 +274,7 @@ body {
         &:hover {
             color: $color-primary;
             background-color: #6d757d;
+            color: #000000;
         }
 
         @media (max-width: 720px) {
@@ -292,6 +293,7 @@ body {
     #greet {
         font-size: $font-size;
         text-align: center;
+        margin-top: 20px;
     }
 
     .add-form {
@@ -380,6 +382,8 @@ body {
         h1{
             text-align: center;
 
+            margin-top: 20px;
+
             @media (max-width: 720px) {
                 font-size: 26px; // font size for viewports <= 720px
             }
@@ -391,6 +395,7 @@ body {
             @media (max-width: 370px) {
                 font-size: 18px; // font size for viewports <= 370px
             }
+
         }
 
         .links {
@@ -440,4 +445,9 @@ body {
         height: 150px;
         border-radius: 75px;
     }
+}
+.img-rounded{
+    width: 65px;
+        height: 65px;
+    border-radius: 32px;
 }

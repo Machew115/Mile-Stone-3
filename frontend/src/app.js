@@ -9,6 +9,7 @@ import Error404 from './pages/Error404';
 import Navbar from './components/Navbar';
 import CurrentUserProvider from './context/CurrentUser';
 import MealLog from './pages/MealLog';
+import UserDataCurrentForm from './components/UserDataCurrentForm';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/profile' element={<Profile/>}/>
           <Route exact path='/meals' element={<MealLog/>}/>
           <Route exact path='/workouts' element={<Workouts/>}/>
+          <Route exact path='/currentdata' element={<UserDataCurrentForm/>}/>
           <Route path='/*' element={<Error404 />} />
         </Routes>
     </CurrentUserProvider>
