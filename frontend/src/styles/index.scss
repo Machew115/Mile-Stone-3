@@ -144,22 +144,28 @@ body {
             cursor: pointer;
         }
 
-        .btn-secondary {
-            border: none;
-            background-color: #dadada;
-            color: #000000;
+    }
 
-            &:hover {
-                color: $color-primary;
-                background-color: #6d757d;
-            }
+    .btn-secondary {
+        border: none;
+        background-color: #dadada;
+        color: #000000;
+
+        &:hover {
+            color: $color-primary;
+            background-color: #6d757d;
         }
+    }
+
+    #greet {
+        font-size: $font-size;
+        text-align: center;
     }
 
     .add-form {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         margin: auto;
 
@@ -201,12 +207,65 @@ body {
                 left: 0.6rem;
                 background-color: #ffffff;
             } 
+
+            .search {
+                position: absolute;
+                width: 20px;
+                height: auto;
+                top:0.7rem;
+                right: 0.7rem;
+                cursor: pointer;
+                background-color: #ffffff;
+            }
+        }
+
+        .show-pw {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+
+            .sign-up {
+                color: #000000;
+                position: absolute;
+                text-decoration: none;
+                right: 0;
+                text-align: center;
+
+                &:hover {
+                    color: $color-primary;
+                }
+            }
         }
     }
 
-    #greet {
-        font-size: $font-size;
-        text-align: center;
+    main {
+
+        h1{
+            text-align: center;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 200ms ease-in-out;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+             
+            h2 {
+                text-align: center;
+            }
+        }
     }
 }
 

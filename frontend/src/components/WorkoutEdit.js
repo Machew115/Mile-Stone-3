@@ -35,64 +35,66 @@ function WorkoutEdit({ workout }) {
 };
 
         return(
-            <tr>
-            <th scope='row'></th>
-            <td>
-                <input
-                    className='w-50'
-                    type="text"
-                    id="Muscle Group"
-                    value={MuscleGroup}
-                    onChange={(event) => setMuscleGroup(event.target.value)}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="text"
-                    id="exercise"
-                    value={Exercise}
-                    onChange={(event) => setExercise(event.target.value)}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="sets"
-                    value={Sets}
-                    onChange={(event) => setSets(parseInt(event.target.value))}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="reps"
-                    value={Reps}
-                    onChange={(event) => setReps(parseInt(event.target.value))}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="number"
-                    id="weight"
-                    value={Weight}
-                    onChange={(event) => setWeight(parseInt(event.target.value))}
-                />
-            </td>
-            <td>
-                <input
-                    className='w-50'
-                    type="text"
-                    id="duration"
-                    value={Duration}
-                    onChange={(event) => setDuration(event.target.value)}
-                />
-            </td>
-            <td onClick={handleSubmit} className='btn btn-secondary w-100' id='save-btn'>Save</td>
-        </tr>
+            <div className='w-100 edit-box mt-2'>
+                <p id='new-edit' className='fw-bold'> New Edit </p>
+                <ul className='list-group list-group-horizontal justify-content-center w-75' id='input'>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        className='w-100'
+                        type="text"
+                        id="Muscle Group"
+                        value={MuscleGroup}
+                        onChange={(event) => setMuscleGroup(event.target.value)}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        className='w-100'
+                        type="text"
+                        id="exercise"
+                        value={Exercise}
+                        onChange={(event) => setExercise(event.target.value)}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        className='w-100'
+                        type="number"
+                        id="sets"
+                        value={Sets}
+                        onChange={(event) => setSets(parseInt(event.target.value))}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        className='w-100'
+                        type="number"
+                        id="reps"
+                        value={Reps}
+                        onChange={(event) => setReps(parseInt(event.target.value))}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        className='w-100'
+                        type="number"
+                        id="weight"
+                        value={Weight}
+                        onChange={(event) => setWeight(parseInt(event.target.value))}
+                    />
+                </li>
+                <li className='list-group-item w-100 text-nowrap'>
+                    <input
+                        className='w-100'
+                        type="text"
+                        id="duration"
+                        value={Duration}
+                        onChange={(event) => setDuration(event.target.value)}
+                    />
+                </li>
+            </ul>
+            <button onClick={handleSubmit} className='btn btn-secondary fw-bold' id='save-btn'>Save</button>
+        </div>
         )
 
     }

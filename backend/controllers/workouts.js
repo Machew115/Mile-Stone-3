@@ -36,7 +36,6 @@ workoutRouter.get('/', async(req,res)=> {
 });
 
 workoutRouter.post('/', async(req,res) => {
-    console.log(req.body)
    try {
     // recieve workout data from request body
    const {workout_user_id, workout_date, workout_muscle_group, workout_exercise,
