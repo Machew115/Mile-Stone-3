@@ -110,10 +110,12 @@ body .btn-secondary {
 body .btn-secondary:hover {
   color: #1cd4ff;
   background-color: #6d757d;
+  color: #000000;
 }
 body #greet {
   font-size: 18px;
   text-align: center;
+  margin-top: 20px;
 }
 body .add-form {
   display: flex;
@@ -147,18 +149,6 @@ body .add-form .input-hold ._label {
   top: 0.6rem;
   cursor: text;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
-}
-body .add-form .input-hold .input_:not(:-moz-placeholder-shown).input_:not(:focus) ~ ._label {
-  top: -0.6rem;
-  font-size: 0.8rem;
-  left: 0.6rem;
-  background-color: #ffffff;
-}
-body .add-form .input-hold .input_:not(:-ms-input-placeholder).input_:not(:focus) ~ ._label {
-  top: -0.6rem;
-  font-size: 0.8rem;
-  left: 0.6rem;
-  background-color: #ffffff;
 }
 body .add-form .input-hold .input_:focus ~ ._label,
 body .add-form .input-hold .input_:not(:placeholder-shown).input_:not(:focus) ~ ._label {
@@ -194,6 +184,7 @@ body .add-form .show-pw .sign-up:hover {
 }
 body main h1 {
   text-align: center;
+  margin-top: 20px;
 }
 body main .links {
   display: flex;
@@ -224,4 +215,12 @@ body main .links h2 {
   width: 150px;
   height: 150px;
   border-radius: 75px;
-}/*# sourceMappingURL=index.css.map */
+}
+
+.img-rounded {
+  width: 65px;
+  height: 65px;
+  border-radius: 32px;
+}
+
+/*# sourceMappingURL=index.css.map */

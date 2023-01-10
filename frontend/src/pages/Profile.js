@@ -1,37 +1,65 @@
 import {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
+import LogoutProfile from '../components/LogoutProfile';
+import IconUserNav from '../components/IconUserNav';
 
 const Profile = () => {
-    const {currentUser} =useContext(CurrentUser)    
-    
-
+    const {currentUser} =useContext(CurrentUser)   
+    const startDate= currentUser?.userdata.data_start_date.substr(0,10)
     return (
-        <div>
+        <main className='w-100 mt-3 px-2'>
             {currentUser ? (
             currentUser.userdata ? (
                 <div>
-                    <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
-                    <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
+                    <h1 id='greet' className='fw-bold greet'>Welcome, {currentUser?.user.user_f_name}!</h1>
+                    <h4 id='greet' className='fw-bold greet'>Let's get FIT!! {startDate}</h4>
                     <div className='profile'>
                         <div>
-                            <img src={`${currentUser?.user.user_avatar_url}`} alt='profile pic'/><br />
+                            <img src={currentUser?.user.user_avatar_url} alt='profile pic'/><br />
 
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
-                            <p><b>USERID:{currentUser?.user.user_id}</b></p>    
+                            <p><b>USERID:{currentUser?.user.user_id}</b></p>
+                            <LogoutProfile/>    
                         </div>
-                        <div text-align='left'>
-                        <h3>User Details:</h3>
-                        <p>Start Date: <b>{currentUser?.userdata.data_start_date}</b></p>
-                        <p>Starting Weight: <b>{currentUser?.userdata.data_start_weight} lbs</b></p>
-                        <p>Starting Waist: <b>{currentUser?.userdata.data_start_waist} inches</b></p>
-                        <p>Starting Chest: <b>{currentUser?.userdata.data_start_chest} inches</b></p>
-                        <p>Starting Shoulders: <b>{currentUser?.userdata.data_start_shoulders} inches</b></p>
-                        <p>Starting Biceps:  <b>{currentUser?.userdata.data_start_biceps} inches</b></p>
-                        <p>Starting Thighs:  <b>{currentUser?.userdata.data_start_thighs} inches</b></p>
-                        <p>Starting Calves:  <b>{currentUser?.userdata.data_start_calves} inchees</b></p>                               
-                    </div> 
+                    </div>    
+                    <div className="table-responsive">
+                        <table className ="table">
+                            <thead>
+                                <tr>
+                                    <th colSpan='7' fontSize='18px'>User Details:</th>   
+                                </tr>
+                                <tr>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">Start Weight</th>
+                                    <th scope="col">Start Waist</th>
+                                    <th scope="col">Start Chest</th>
+                                    <th scope="col">Start Biceps</th>
+                                    <th scope="col">Start Thighs</th>
+                                    <th scope="col">Start Calves</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{startDate}</td>
+                                    <td>{currentUser?.userdata.data_start_weight}</td>
+                                    <td>{currentUser?.userdata.data_start_waist}</td>
+                                    <td>{currentUser?.userdata.data_start_chest}</td>
+                                    <td>{currentUser?.userdata.data_start_biceps}</td>
+                                    <td>{currentUser?.userdata.data_start_thighs}</td>
+                                    <td>{currentUser?.userdata.data_start_calves}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>    
+                <div style={{textAlign:'center', marginBottom:'50px'}}>
+                    <a href='./currentdata'><button className='btn btn-secondary'>Enter Current Data</button></a>
                 </div>
-            </div>
+                <div  className='w-100 mt-3 px-2'>     
+                    <IconUserNav />
+                </div> 
+           </div>
+           
+            
             ):(
                 // add code to navigate to create userData Form
                 <div>
@@ -59,7 +87,7 @@ const Profile = () => {
                     }, 5000)}
                 </div>
             )}
-        </div>
+        </main>
     );
 };
 
