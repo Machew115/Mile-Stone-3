@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
 import LogoutProfile from '../components/LogoutProfile';
 import IconUserNav from '../components/IconUserNav';
@@ -8,14 +8,15 @@ const Profile = () => {
     const startDate= currentUser?.userdata.data_start_date.substr(0,10)
     return (
         <main className='w-100 mt-3 px-2'>
-            {currentUser ? (
-            currentUser.userdata ? (
+          <div>
+            { currentUser && currentUser.userdata ? (
                 <div>
-                    <h1 id='greet' className='fw-bold greet'>Welcome, {currentUser?.user.user_f_name}!</h1>
-                    <h4 id='greet' className='fw-bold greet'>Let's get FIT!! {startDate}</h4>
+                    <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
+                    <h4 id='greet' className='fw-bold'>{`Let's get FIT!!`}</h4>
                     <div className='profile'>
                         <div>
-                            <img src={currentUser?.user.user_avatar_url} alt='profile pic'/><br />
+                            <img src='./profile-photo-icon.jpg' alt='profile pic'/>
+                            <br />
 
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
                             <p><b>USERID:{currentUser?.user.user_id}</b></p>
@@ -58,9 +59,7 @@ const Profile = () => {
                     <IconUserNav />
                 </div> 
            </div>
-           
-            
-            ):(
+            ): currentUser ? (
                 // add code to navigate to create userData Form
                 <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
@@ -72,9 +71,6 @@ const Profile = () => {
                     </div>
                     <h3> No User Details Yet!</h3>
                 </div>
-            )
-        
-              
             ) : (
                 // code to navigate to login
                 <div>
