@@ -24,6 +24,14 @@ body {
             #heart {
                 height: 40px;
                 width: auto;
+
+                @media (max-width: 720px) {
+                    height: 30px; // font size for viewports <= 720px
+                }
+
+                @media (max-width: 370px) {
+                    height: 25px; // font size for viewports <= 370px
+                }
             }
 
             a {
@@ -34,6 +42,14 @@ body {
                 &:hover {
                     color: $color-primary;
                     background-color: transparent;
+                }
+
+                @media (max-width: 720px) {
+                    font-size: 26px; // font size for viewports <= 720px
+                }
+
+                @media (max-width: 370px) {
+                    font-size: 22px; // font size for viewports <= 370px
                 }
             }
         }
@@ -47,6 +63,14 @@ body {
                 width: auto;
                 background-color: transparent;
                 background-image: none;
+
+                @media (max-width: 720px) {
+                    height: 35px; //for viewports <= 720px
+                }
+
+                @media (max-width: 370px) {
+                    height: 28px; // font size for viewports <= 370px
+                }
             }
 
             #dropdown {
@@ -68,7 +92,25 @@ body {
             ul {
                 left: auto;
                 right: 0;
+
+                @media (max-width: 720px) {
+                    font-size: 14px; // font size for viewports <= 720px
+                }
+    
+                @media (max-width: 480px) {
+                    font-size: 12px; // font size for viewports <= 480px
+                }
+    
+                @media (max-width: 370px) {
+                    font-size: 10px; // font size for viewports <= 370px
+                }
             }
+        }
+
+        .login-hold {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
         }
     }
 
@@ -77,14 +119,53 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        overflow-x: scroll;
+
+        @media (max-width: 480px) {
+            justify-content: left;
+        }
 
         .titles {
             background-color: #dadada;
+            text-align: center;
+            font-size: 16;
+            overflow-x: scroll;
+
+            @media (max-width: 720px) {
+                font-size: 14px; // font size for viewports <= 720px
+            }
+
+            @media (max-width: 640px) {
+                text-align: left;
+                padding-left: 0.4rem;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 12px; // font size for viewports <= 480px
+                padding-left: 0.2rem;
+            }
+
+            @media (max-width: 370px) {
+                font-size: 10px; // font size for viewports <= 370px
+            }
         }
 
         input[type="date" i] {
 
             border: none;
+
+            @media (max-width: 720px) {
+                font-size: 14px; // font size for viewports <= 720px
+            }
+
+            @media (max-width: 480px) {
+                font-size: 12px; // font size for viewports <= 480px
+                align-self: flex-start;
+            }
+
+            @media (max-width: 370px) {
+                font-size: 10px; // font size for viewports <= 370px
+            }
         }
         
 
@@ -93,17 +174,20 @@ body {
             flex-wrap: wrap;
             justify-content: center;
 
-            #input {
-                margin: auto;
-
-                input {
-                    border: none;
-                    width: 100%;
-                }
-            }
-
             .list-group-item {
                 overflow-x: scroll;
+
+                @media (max-width: 720px) {
+                    font-size: 14px; // font size for viewports <= 720px
+                }
+    
+                @media (max-width: 480px) {
+                    font-size: 12px; // font size for viewports <= 480px
+                }
+    
+                @media (max-width: 370px) {
+                    font-size: 10px; // font size for viewports <= 370px
+                }
             }
 
             .btn-danger, .btn-warning {
@@ -111,6 +195,10 @@ body {
 
                 &:hover {
                     color: $color-primary;
+                }
+
+                @media (max-width: 480px) {
+                    text-align: left;; // font size for viewports <= 480px
                 }
             }
 
@@ -120,12 +208,30 @@ body {
 
                 .list-group-item {
                     overflow: auto;
+
+                    input {
+                        border: none;
+                    }
                 }
 
                 #new-edit, #save-btn {
                     margin: auto;
                     text-align: center;
                     width: 12.5%;
+
+                    @media (max-width: 720px) {
+                        font-size: 14px; // font size for viewports <= 720px
+                    }
+        
+                    @media (max-width: 520px) {
+                        font-size: 12px; // font size for viewports <= 480px
+                        padding-left: 0.5rem;
+                    }
+        
+                    @media (max-width: 370px) {
+                        font-size: 10px; // font size for viewports <= 370px
+                        padding-left: 0.25rem;
+                    }
                 }
 
                 #save-btn {
@@ -142,6 +248,20 @@ body {
             border: none;
             background-color: transparent;
             cursor: pointer;
+
+            @media (max-width: 720px) {
+                font-size: 14px; // font size for viewports <= 720px
+            }
+
+            @media (max-width: 520px) {
+                font-size: 12px; // font size for viewports <= 480px
+                padding-left: 0.5rem;
+            }
+
+            @media (max-width: 370px) {
+                font-size: 10px; // font size for viewports <= 370px
+                padding-left: 0.25rem;
+            }
         }
 
     }
@@ -154,6 +274,18 @@ body {
         &:hover {
             color: $color-primary;
             background-color: #6d757d;
+        }
+
+        @media (max-width: 720px) {
+            font-size: 14px; // font size for viewports <= 720px
+        }
+
+        @media (max-width: 480px) {
+            font-size: 12px; // font size for viewports <= 480px
+        }
+
+        @media (max-width: 370px) {
+            font-size: 10px; // font size for viewports <= 370px
         }
     }
 
@@ -193,11 +325,15 @@ body {
                 background-color: #ffffff;
                 padding: 0 0.25rem;
                 left: 1rem;
-                top: 0.6rem;
+                top: 0.7rem;
                 cursor: text;
                 transition: top 200ms ease-in,
                     left 200ms ease-in,
                     font-size 200ms ease-in;
+
+                @media (max-width: 720px) {
+                    font-size: 14px; // font size for viewports <= 720px
+                }
             }
 
             .input_:focus ~ ._label,
@@ -243,6 +379,18 @@ body {
 
         h1{
             text-align: center;
+
+            @media (max-width: 720px) {
+                font-size: 26px; // font size for viewports <= 720px
+            }
+
+            @media (max-width: 480px) {
+                font-size: 20px; // font size for viewports <= 720px
+            }
+
+            @media (max-width: 370px) {
+                font-size: 18px; // font size for viewports <= 370px
+            }
         }
 
         .links {
@@ -264,6 +412,18 @@ body {
              
             h2 {
                 text-align: center;
+
+                @media (max-width: 720px) {
+                    font-size: 18px; // font size for viewports <= 720px
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 14px; // font size for viewports <= 480px
+                }
+
+                @media (max-width: 370px) {
+                    font-size: 12px; // font size for viewports <= 370px
+                }
             }
         }
     }

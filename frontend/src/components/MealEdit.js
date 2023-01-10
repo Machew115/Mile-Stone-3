@@ -39,41 +39,46 @@ function MealEdit({ meal }) {
         <div className='w-100 edit-box mt-2'>
             <p id='new-edit' className='fw-bold'> New Edit </p>
             <ul className='list-group list-group-horizontal justify-content-center w-75' id='input'>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         type="text"
+                        className='w-100'
                         id="description"
                         value={description}
                         onChange={(event) => setDescription(event.target.value)}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         type="number"
+                        className='w-100'
                         id="calories"
                         value={calories}
                         onChange={(event) => setCalories(event.target.value)}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         type="number"
+                        className='w-100'
                         id="protein"
                         value={protein}
                         onChange={(event) => setProtein(event.target.value)}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         type="number"
+                        className='w-100'
                         id="fat"
                         value={fat}
                         onChange={(event) => setFat(event.target.value)}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap edit-hold px-1'>
                     <input
                         type="number"
+                        className='w-100'
                         id="carbs"
                         value={carbs}
                         onChange={(event) => setCarbs(event.target.value)}
