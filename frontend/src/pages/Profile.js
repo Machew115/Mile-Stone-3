@@ -8,7 +8,6 @@ const Profile = () => {
     const startDate= currentUser?.userdata.data_start_date.substr(0,10)
     return (
         <main className='w-100 mt-3 px-2'>
-          <div>
             { currentUser && currentUser.userdata ? (
                 <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
