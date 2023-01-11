@@ -1,8 +1,7 @@
 import IconUserNav from '../components/IconUserNav';
-
+import { useState } from 'react';
 
 const Home = () => {
-    const { currentUser } = useContext(CurrentUser); // get the currentUser from the context
     const [viewportWidth, setViewPortWidth] = useState(window.innerWidth);
     let timeout;
 
