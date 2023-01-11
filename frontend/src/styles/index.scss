@@ -289,11 +289,6 @@ body {
         }
     }
 
-    #greet {
-        font-size: $font-size;
-        text-align: center;
-    }
-
     .add-form {
         display: flex;
         flex-direction: column;
@@ -427,17 +422,77 @@ body {
             }
         }
     }
-}
+    .profile {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            align-items: center;
+            text-align: center;
 
-.profile {
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-        margin: 20px 0px;
+        .greet {
+            justify-self: center;
+            font-size: 26px;
+            
+            @media (max-width: 720px) {
+                font-size: 22px; // font size for viewports <= 720px
+            }
 
-    img {
-        width: 150px;
-        height: 150px;
-        border-radius: 75px;
+            @media (max-width: 480px) {
+                font-size: 20px; // font size for viewports <= 720px
+            }
+
+            @media (max-width: 370px) {
+                font-size: 18px; // font size for viewports <= 370px
+            }
+        }
+        .name-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            h3 {
+                width: 100%;
+                color: $color-primary;
+                background-color: #6d757d;
+                border-radius: 15px;
+                font-size: 24px;
+                
+                @media (max-width: 720px) {
+                    font-size: 22px; // font size for viewports <= 720px
+                }
+
+                @media (max-width: 480px) {
+                    font-size: 20px; // font size for viewports <= 720px
+                }
+
+                @media (max-width: 370px) {
+                    font-size: 18px; // font size for viewports <= 370px
+                }
+            }
+            
+        }
+
+        .carousel-bg {
+            border-radius: 15px;
+
+            img, .car-caption {
+                color: #000000;
+                border-radius: 15px;
+            }
+
+            .car-caption {
+                color: $color-primary;
+                background-color: #6d757d;
+            }
+        }
     }
 }
+
+
+

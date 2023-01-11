@@ -273,10 +273,6 @@ body .btn-secondary:hover {
     font-size: 10px;
   }
 }
-body #greet {
-  font-size: 18px;
-  text-align: center;
-}
 body .add-form {
   display: flex;
   flex-direction: column;
@@ -410,15 +406,72 @@ body main .links h2 {
     font-size: 12px;
   }
 }
-
-.profile {
+body .profile {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
   text-align: center;
-  margin: 20px 0px;
 }
-.profile img {
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
+body .profile .greet {
+  justify-self: center;
+  font-size: 26px;
+}
+@media (max-width: 720px) {
+  body .profile .greet {
+    font-size: 22px;
+  }
+}
+@media (max-width: 480px) {
+  body .profile .greet {
+    font-size: 20px;
+  }
+}
+@media (max-width: 370px) {
+  body .profile .greet {
+    font-size: 18px;
+  }
+}
+body .profile .name-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .profile .name-details img {
+  width: 100%;
+  height: auto;
+}
+body .profile .name-details h3 {
+  width: 100%;
+  color: #1cd4ff;
+  background-color: #6d757d;
+  border-radius: 15px;
+  font-size: 24px;
+}
+@media (max-width: 720px) {
+  body .profile .name-details h3 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 480px) {
+  body .profile .name-details h3 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 370px) {
+  body .profile .name-details h3 {
+    font-size: 18px;
+  }
+}
+body .profile .carousel-bg {
+  border-radius: 15px;
+}
+body .profile .carousel-bg img, body .profile .carousel-bg .car-caption {
+  color: #000000;
+  border-radius: 15px;
+}
+body .profile .carousel-bg .car-caption {
+  color: #1cd4ff;
+  background-color: #6d757d;
 }/*# sourceMappingURL=index.css.map */
