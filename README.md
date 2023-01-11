@@ -11,7 +11,7 @@ Once logged in they will be able to update the own personal data to track their 
 They will also able to log their workouts and meals to track their calorie consumption.<br/>
 They will be able to select different exercises to target specific muscle groups.<br/>
 The interface will be resizable to view on different size screens. <br/>
-
+<br/>
 ## Technology
 * React - Frontend UI development
 * NodeJS  - Backend API development and Testing
@@ -25,11 +25,19 @@ The interface will be resizable to view on different size screens. <br/>
 * Heroku- Web Deployment
 * JWT Token Authorization - Security to authenticate user login
 * BCrypt - Security to Hash Password
+<br/>
+<br/>
 
 ## Screenshots
-## Profile
 
+### Home
+
+![alt Profile-Snapshot](frontend/public/fittrack-home-snapshot.png/) 
+
+### Profile
 ![alt Profile-Snapshot](frontend/public/fittrack-profile-snapshot.png/) 
+
+<br/>
 
 ## API - Controllers
 
@@ -38,14 +46,14 @@ The interface will be resizable to view on different size screens. <br/>
 |--------|------|---------| 
 |POST | authentication/ | Authenticate User|
 |GET | authentication/profile | Retrieve User data|
-
+<br/>
 
 ### Users & UserData
 | Method | Path | Purpose |
 |--------|------|---------|
 |POST | /* | Login and Assign JWT|
 |GET | /profile | Get User Data for Profile |
-
+<br/>
 
 ### Workouts
 | Method | Path | Purpose |
@@ -54,6 +62,7 @@ The interface will be resizable to view on different size screens. <br/>
 |POST| / | Create a workout log for User|
 |PUT | /:id | Update a workout log for User |
 |DELETE| /:id | Delete a workout log for User|
+<br/>
 
 ### Meals
 | Method | Path | Purpose |
@@ -62,12 +71,14 @@ The interface will be resizable to view on different size screens. <br/>
 |POST| / | Create a meal log for User|
 |PUT | /:id | Update a meal log for User |
 |DELETE| /:id | Delete a meal log for User|
+<br/>
 
 ## Database Structure
 Users 1:1 with UserData on user_id <br>
 Users 1:n with Workouts on user_id <br>
 Users 1:n with Meals on user_id<br>
 Exercises (3rd Party API) <br>
+<br/>
 
 ## Contributors
 
