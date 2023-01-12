@@ -1,16 +1,14 @@
 const UserDataRouter = require('express').Router()
 const db = require('../models');
 
-const {UserData} = db
-
+const {Userdata} = db
 
 
 UserDataRouter.post('/', async(req,res) => {
     try {
      // recieve user data from request body
     const {
-        data_start_date,
-        data_current_date,
+        data_user_id,
         data_start_weight, 
         data_current_weight, 
         data_start_waist, 
@@ -28,9 +26,8 @@ UserDataRouter.post('/', async(req,res) => {
     } = req.body;
  
      // create new user data 
-     const newUserData = await UserData.create({
-        data_start_date,
-        data_current_date,
+     const newUserData = await Userdata.create({
+        data_user_id,
         data_start_weight, 
         data_current_weight, 
         data_start_waist, 
@@ -56,7 +53,7 @@ UserDataRouter.post('/', async(req,res) => {
 UserDataRouter.put('/:id', async(req,res) =>{
     try{
         //get userdata id from params
-        const {id} = req.params;
+        let id= Number(req.params.id)
         
         // get updated data from the request body
         const {
@@ -68,11 +65,8 @@ UserDataRouter.put('/:id', async(req,res) =>{
             data_current_biceps,
             data_current_thighs,
             data_current_calves} =req.body;
-        
         // find the userdata with a matching id
-    const userdata = await UserData.findOne({
-        where: {id: id}
-    });
+        const userdata = await Userdata.findByPk(id)
         // update the userdata with new data
     await userdata.update({ 
         data_current_date,
@@ -97,7 +91,7 @@ UserDataRouter.delete('/:id', async (req,res) => {
     const {id} = req.params;
         
         // find workout with a matching id
-    const userdata = await UserData.findByPk(id);
+    const userdata = await Userdata.findByPk(id);
 
         // delete the workout
     await userdata.destroy();

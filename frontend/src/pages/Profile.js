@@ -2,17 +2,11 @@ import React, {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
 import LogoutProfile from '../components/LogoutProfile';
 import IconUserNav from '../components/IconUserNav';
-import UserDataEdit from '../components/UserDataEdit';
-
+import UserDataForm from '../components/UserDataForm'
 const Profile = () => {
     const {currentUser} =useContext(CurrentUser)   
-    console.log(currentUser?.user.user_id)
-    //const startDate= currentUser?.userdata.data_start_date.substr(0,10)
-    const currentdate = new Date().toISOString().split('T')[0]
-
-   // const displayAddForm = () => {
-      //  !addDisplay ? setAddDisplay(true) : setAddDisplay(false)
-    //}
+    console.log(currentUser)
+   
     return (
         <main className='w-100 mt-3 px-2'>
           <div>
@@ -48,7 +42,7 @@ const Profile = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                     
+                                    <td>{currentUser?.userdata.data_start_date}</td>
                                     <td>{currentUser?.userdata.data_start_weight}</td>
                                     <td>{currentUser?.userdata.data_start_waist}</td>
                                     <td>{currentUser?.userdata.data_start_chest}</td>
@@ -78,6 +72,7 @@ const Profile = () => {
                     </div>
                     <h3> No User Details Yet!</h3>
                     <p>Please enter your details to keep track of your progress</p>
+                    <UserDataForm user_id={currentUser?.user.user_id} />
                     <div>                            
                     </div>
                 </div>

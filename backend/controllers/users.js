@@ -2,7 +2,7 @@ const userRouter = require('express').Router()
 const db = require('../models')
 const bcrypt =require('bcrypt')
 
-const {Users, UserData} = db
+const {Users, Userdata} = db
 
 userRouter.post('/', async(req,res)=>{
    let userCheck= await Users.findOne({
@@ -25,7 +25,7 @@ userRouter.post('/', async(req,res)=>{
 userRouter.get('/:id', async(req,res)=>{
     let userid= Number(req.params.id)
     console.log('This hit the User Id Route',userid)
-    const userDetails = await UserData.findOne({
+    const userDetails = await Userdata.findOne({
         where: {data_user_id:userid}
     })
     console.log('This is the what is returned from the UserData table',userDetails)

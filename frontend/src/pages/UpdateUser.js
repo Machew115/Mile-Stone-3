@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { CurrentUser } from '../context/CurrentUser';
 
 function UpdateUser() {
-    const currentdate = new Date().toISOString().split('T')[0]
     const [Weight, setWeight] = useState(0);
     const [Waist, setWaist] = useState(0);
     const [Chest, setChest] = useState(0);
@@ -11,6 +10,7 @@ function UpdateUser() {
     const [Thighs, setThighs] = useState(0);
     const [Calves, setCalves] = useState(0);
     const {currentUser} =useContext(CurrentUser)
+    console.log(currentUser?.userdata.data_id)
     
 
 
@@ -20,7 +20,6 @@ function UpdateUser() {
 
     //create object with updated data to send in request
     const newUserData = {
-            data_current_date: currentdate,
             data_current_weight: Weight,
             data_current_waist: Waist,
             data_current_chest: Chest,
@@ -31,7 +30,7 @@ function UpdateUser() {
     }
 
     //send the new workout object to the server with a Post request 
-    fetch(`http://localhost:5500/userdata/${currentUser.userdata.id}`, {
+    fetch(`http://localhost:5500/userdata/${currentUser.userdata.data_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUserData),

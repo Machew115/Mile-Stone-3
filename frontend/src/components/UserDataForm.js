@@ -1,42 +1,29 @@
 import React, { useState } from 'react';
 
 function UserDataForm(props) {
-
-    console.log(props.date)
+console.log(props.user_id)
     // declare variables 
-    const date = new Date(props.date);
-    [dataWeight, setDataWeight] = useState(0);
-    [dataWaist, setDataWaist] = useState(0);
-    [dataChest, setDataChest] = useState(0);
-    [dataShoulders, setDataShoulders] = useState(0);
-    [dataBiceps, setDataBiceps] = useState(0);
-    [dataThighs, setDataThighs] = useState(0);
-    [dataCalves, setDataCalves] = useState(0);
+    const [newUserData,setNewUserData] = useState({
+        data_user_id: props.user_id,
+        data_start_weight: null,
+        data_current_weight: null,
+        data_start_waist: null,
+        data_current_waist: null,
+        data_start_chest: null,
+        data_current_chest: null,
+        data_start_shoulders: null,
+        data_current_shoulders: null,
+        data_start_biceps: null,
+        data_current_biceps: null,
+        data_start_thighs: null,
+        data_current_thighs: null,
+        data_start_calves: null,
+        data_current_calves: null,
+        });
 
     //Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        // create new userData object
-        const newUserData = {
-        data_user_id: props.user.user_id,
-        data_start_date: date,
-        data_current_date: date,
-        data_start_weight: dataWeight,
-        data_current_weight: dataWeight,
-        data_start_waist: dataWaist,
-        data_current_waist: dataWaist,
-        data_start_chest: dataChest,
-        data_current_chest: dataChest,
-        data_start_shoulders: dataShoulders,
-        data_current_shoulders: dataShoulders,
-        data_start_biceps: dataBiceps,
-        data_current_biceps: dataBiceps,
-        data_start_thighs: dataThighs,
-        data_current_thighs: dataThighs,
-        data_start_calves: dataCalves,
-        data_current_calves: dataCalves,
-        };
 
         //send the new userdata object to the server
         fetch(`http://localhost:5500/userData`, {
@@ -56,81 +43,88 @@ function UserDataForm(props) {
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
-                                    type="text"
-                                    id="dataWeight"
+                                    type="number"
+                                    id="data_start_weight"
+                                    name='data_start_weight'
                                     className="w-100 input_"
-                                    onChange={(event) => setDataWeight(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_weight:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="muscle Group">CurrentWeight (lb):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_weight">CurrentWeight (lb):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
                                     type="number"
-                                    id="dataWaist"
+                                    id="data_start_waist"
+                                    name='data_start_waist'
                                     className="w-100 input_"
-                                    onChange={(event) => setDataWaist(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_waist:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="exercise">Current Waist (cm):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_waist">Current Waist (cm):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
                                     type="number"
-                                    id="dataChest"
+                                    id="data_start_chest"
+                                    name='data_start_chest'
                                     className="w-100 input_"
-                                    onChange={(event) => setDataChest(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_chest:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="sets">Chest size (cm):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_chest">Chest size (cm):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
                                     type="number"
-                                    id="dataShoulders"
+                                    id="data_start_shoulders"
+                                    name="data_start_shoulders"
                                     className="w-100 input_"
-                                    onChange={(event) => setDataShoulders(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_shoulders:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="reps">Shoulder size (cm):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_shoulders">Shoulder size (cm):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
                                     type="number"
-                                    id="dataBiceps"
+                                    id="data_start_biceps"
+                                    name='data_start_biceps'
                                     className="w-100 input_"
-                                    onChange={(event) => setDataBiceps(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_biceps:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="weight">Bicep size (cm):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_biceps">Bicep size (cm):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
                                     type="number"
-                                    id="dataThighs"
+                                    id="data_start_thighs"
+                                    name='data_start_thighs'
                                     className="w-100 input_"
-                                    onChange={(event) => setDataThighs(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_thighs:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="duration">Thigh size (cm):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_thighs">Thigh size (cm):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
                                     type="number"
-                                    id="dataCalves"
+                                    id="data_start_calves"
+                                    name='data_start_calves'
                                     className="w-100 input_"
-                                    onChange={(event) => setDataCalves(event.target.value)}
+                                    onChange={e => setNewUserData({...newUserData,data_start_calves:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="duration">Calve size (cm):</label>
+                                <label className="fw-bold _label" htmlFor="data_start_calves">Calve size (cm):</label>
                             </div>
                             <br />
-                            <button type="submit" className='btn btn-secondary'>Add Workout</button>
+                            <button type="submit" className='btn btn-secondary'>Add My Measurements</button>
                         </form>
                     </div>
     )
