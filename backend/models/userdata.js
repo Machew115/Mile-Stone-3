@@ -22,11 +22,14 @@ module.exports = (sequelize, DataTypes) => {
     },
     data_start_date: {
       type:DataTypes.DATE,
-      allowNull:true
+      allowNull:true,
+      defaultValue: new Date()
+
     },
     data_current_date:{
       type:DataTypes.DATE,
-      allowNull:true
+      allowNull:true,
+      defaultValue: new Date()
     },
     data_start_weight: {
       type:DataTypes.DECIMAL(5,2),
