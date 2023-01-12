@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     data_user_id:{ 
       type:DataTypes.INTEGER,
+      primaryKey:true,
       references:{model:'users',key: 'user_id'},
       allowNull:false
     },
@@ -87,10 +88,11 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.DECIMAL(5,2),
       allowNull:true
     },
-    data_current_calves:  {
-      type:DataTypes.DECIMAL(5,2),
+    id:  {
+      type:DataTypes.INTEGER,
       allowNull:true
-    },
+    }
+
   }, {
     sequelize,
     modelName: 'Userdata',

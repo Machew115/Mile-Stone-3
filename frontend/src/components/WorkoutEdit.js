@@ -24,7 +24,7 @@ function WorkoutEdit({ workout }) {
     };
 
     //send the new workout object to the server with a Post request 
-    fetch(`http://localhost:5500/workouts/${workout.workout_id}`, {
+    fetch(`http://localhost:5000/workouts/${workout.workout_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newWorkoutData),
@@ -38,7 +38,7 @@ function WorkoutEdit({ workout }) {
             <div className='w-100 edit-box mt-2'>
                 <p id='new-edit' className='fw-bold'> New Edit </p>
                 <ul className='list-group list-group-horizontal justify-content-center w-75' id='input'>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         className='w-100'
                         type="text"
@@ -47,7 +47,8 @@ function WorkoutEdit({ workout }) {
                         onChange={(event) => setMuscleGroup(event.target.value)}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
+
                     <input
                         className='w-100'
                         type="text"
@@ -56,7 +57,7 @@ function WorkoutEdit({ workout }) {
                         onChange={(event) => setExercise(event.target.value)}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         className='w-100'
                         type="number"
@@ -65,7 +66,7 @@ function WorkoutEdit({ workout }) {
                         onChange={(event) => setSets(parseInt(event.target.value))}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         className='w-100'
                         type="number"
@@ -74,7 +75,7 @@ function WorkoutEdit({ workout }) {
                         onChange={(event) => setReps(parseInt(event.target.value))}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         className='w-100'
                         type="number"
@@ -83,7 +84,7 @@ function WorkoutEdit({ workout }) {
                         onChange={(event) => setWeight(parseInt(event.target.value))}
                     />
                 </li>
-                <li className='list-group-item w-100 text-nowrap'>
+                <li className='list-group-item w-100 text-nowrap px-1'>
                     <input
                         className='w-100'
                         type="text"

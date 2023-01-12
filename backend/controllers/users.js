@@ -24,11 +24,30 @@ userRouter.post('/', async(req,res)=>{
 
 userRouter.get('/:id', async(req,res)=>{
     let userid= Number(req.params.id)
-    console.log('This hit the User Id Route',userid)
+    const userDetails = await Userdata.findOne({
+
+        where: {data_user_id:userid}
+    })
+    res.json(userDetails)
+})
+
+userRouter.post('/newData', async(req,res)=>{
+    let userCheck= await UserData.findOne({
+         where: {data_user_id:req.body.user_id}
+    })
+    if(userCheck){
+      // if the user exists - Add the new user data to the start columns
+    } else {
+     //Send error message that the user does not exist  
+    }    
+ })
+
+userRouter.get('/:id', async(req,res)=>{
+    let userid= Number(req.params.id)
     const userDetails = await Userdata.findOne({
         where: {data_user_id:userid}
     })
-    console.log('This is the what is returned from the UserData table',userDetails)
+    
     res.json(userDetails)
 })
 

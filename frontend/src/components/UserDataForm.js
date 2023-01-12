@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 function UserDataForm(props) {
@@ -5,6 +6,7 @@ console.log(props.user_id)
     // declare variables 
     const [newUserData,setNewUserData] = useState({
         data_user_id: props.user_id,
+
         data_start_weight: null,
         data_current_weight: null,
         data_start_waist: null,
@@ -26,14 +28,17 @@ console.log(props.user_id)
         event.preventDefault();
 
         //send the new userdata object to the server
-        fetch(`http://localhost:5500/userData`, {
+        fetch(`http://localhost:5000/userData`, {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUserData),
     });
 
     // reload the page after
+
     window.location.reload()
+
 
     }
 
