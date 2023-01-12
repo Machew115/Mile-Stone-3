@@ -14,7 +14,7 @@ const Profile = () => {
                     <h4 id='greet' className='fw-bold'>{`Let's get FIT!!`}</h4>
                     <div className='profile'>
                         <div>
-                            <img src='./profile-photo-icon.jpg' alt='profile pic'/>
+                            <img src={currentUser.user.user_avatar_url} alt='profile pic'/>
                             <br />
 
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
@@ -52,7 +52,7 @@ const Profile = () => {
                         </table>
                     </div>    
                 <div style={{textAlign:'center', marginBottom:'50px'}}>
-                    <a href='./currentdata'><button className='btn btn-secondary'>Enter Current Data</button></a>
+                    <a href={`./currentData`}><button className='btn btn-secondary'>Enter Current Measurements</button></a>
                 </div>
                 <div  className='w-100 mt-3 px-2'>     
                     <IconUserNav />
@@ -69,6 +69,9 @@ const Profile = () => {
                         <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                     </div>
                     <h3> No User Details Yet!</h3>
+                    <div style={{textAlign:'center', marginBottom:'50px'}}>
+                    <a href={`./newdata`}><button className='btn btn-secondary'>Enter Your Starting Measurements</button></a>
+                </div>
                 </div>
             ) : (
                 // code to navigate to login

@@ -38,6 +38,7 @@ app.use('/authentication',require('./controllers/authentication'))
 app.use('/users',require('./controllers/users'))
 app.use('/meals',require('./controllers/meals'))
 app.use('/workouts',require('./controllers/workouts'))
+app.use('/addData',require('./controllers/userData'))
 
 //Listen
 app.listen(process.env.PORT,()=>{

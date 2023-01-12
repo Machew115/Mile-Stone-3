@@ -80,10 +80,11 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.DECIMAL(5,2),
       allowNull:true
     },
-    data_current_calves:  {
-      type:DataTypes.DECIMAL(5,2),
+    id:  {
+      type:DataTypes.INTEGER,
       allowNull:true
     }
+
   }, {
     sequelize,
     modelName: 'UserData',
