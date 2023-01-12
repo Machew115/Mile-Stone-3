@@ -1,90 +1,86 @@
-import {useContext, useState } from 'react';
+import React, {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
-import { EditUserInfo } from '../components/UserDataEdit'
-import { UserDataForm } from '../components/UserDataForm'
+import LogoutProfile from '../components/LogoutProfile';
+import IconUserNav from '../components/IconUserNav';
+import UserDataEdit from '../components/UserDataEdit';
 
 const Profile = () => {
-    const {currentUser} =useContext(CurrentUser)    
-    console.log(currentUser)
+    const {currentUser} =useContext(CurrentUser)   
+    console.log(currentUser?.user.user_id)
+    //const startDate= currentUser?.userdata.data_start_date.substr(0,10)
+    const currentdate = new Date().toISOString().split('T')[0]
 
-    const [editingUserDataId, setEditingUserDataId] = useState(null);
-    const [display, setDisplay] = useState(false);
-    const [addDisplay, setAddDisplay] = useState(false);
-
-
-//Workout Delete request
-async function deleteUserData(currentUser) {
-    try {
-        await fetch(`http://localhost:5500/workouts/${currentUser.user.user_id}`, {
-            method: 'DELETE',
-        });
-        // After the Delete request is complete, reload page
-        window.location.reload()
-    } catch (error) {
-        console.error(error);
-    }
- }
-
- const displayForm = (currentUser) => {
-    setEditingUserDataId(currentUser.userdata.data_user_id);
-    (display) ? setDisplay(false) : setDisplay(true)
-}
-
-const displayAddForm = () => {
-    !addDisplay ? setAddDisplay(true) : setAddDisplay(false)
-}
-
+   // const displayAddForm = () => {
+      //  !addDisplay ? setAddDisplay(true) : setAddDisplay(false)
+    //}
     return (
-        <div>
-            {currentUser ? (
-            currentUser.userdata ? (
+        <main className='w-100 mt-3 px-2'>
+          <div>
+            { currentUser && currentUser.userdata ? (
                 <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
-                    <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
+                    <h4 id='greet' className='fw-bold'>{`Let's get FIT!!`}</h4>
                     <div className='profile'>
                         <div>
-                            <img src='./profile-photo-icon.jpg' alt='profile pic'/><br />
+                            <img src='./profile-photo-icon.jpg' alt='profile pic'/>
+                            <br />
+
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
-                            <p><b>USERID:{currentUser?.user.user_id}</b></p>    
+                            <p><b>USERID:{currentUser?.user.user_id}</b></p>
+                            <LogoutProfile/>    
                         </div>
-                        <div text-align='left'>
-                        <h3>User Details:</h3>
-                        <p>Start Date: <b>{currentUser?.userdata.data_start_date}</b></p>
-                        <p>Starting Weight: <b>{currentUser?.userdata.data_start_weight} lbs</b></p>
-                        <p>Starting Waist: <b>{currentUser?.userdata.data_start_waist} inches</b></p>
-                        <p>Starting Chest: <b>{currentUser?.userdata.data_start_chest} inches</b></p>
-                        <p>Starting Shoulders: <b>{currentUser?.userdata.data_start_shoulders} inches</b></p>
-                        <p>Starting Biceps:  <b>{currentUser?.userdata.data_start_biceps} inches</b></p>
-                        <p>Starting Thighs:  <b>{currentUser?.userdata.data_start_thighs} inches</b></p>
-                        <p>Starting Calves:  <b>{currentUser?.userdata.data_start_calves} inchees</b></p>    
-                        <button onClick={() => displayForm(currentUser.userdata)} className='btn btn-warning fw-bold'>Edit</button>
-                        {editingUserDataId === currentUser.userdata.data_user_id && display ? <EditUserInfo UserData={currentUser.userdata} /> : null} 
-                        <button onClick={() => deleteUserData(currentUser.userdata.data_user_id)} className='btn btn-danger fw-bold'>Delete</button>                          
-                    </div> 
+                    </div>    
+                    <div className="table-responsive">
+                        <table className ="table">
+                            <thead>
+                                <tr>
+                                    <th colSpan='7' fontSize='18px'>User Details:</th>   
+                                </tr>
+                                <tr>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">Start Weight</th>
+                                    <th scope="col">Start Waist</th>
+                                    <th scope="col">Start Chest</th>
+                                    <th scope="col">Start Biceps</th>
+                                    <th scope="col">Start Thighs</th>
+                                    <th scope="col">Start Calves</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                     
+                                    <td>{currentUser?.userdata.data_start_weight}</td>
+                                    <td>{currentUser?.userdata.data_start_waist}</td>
+                                    <td>{currentUser?.userdata.data_start_chest}</td>
+                                    <td>{currentUser?.userdata.data_start_biceps}</td>
+                                    <td>{currentUser?.userdata.data_start_thighs}</td>
+                                    <td>{currentUser?.userdata.data_start_calves}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>    
+                <div style={{textAlign:'center', marginBottom:'50px'}}>
+                    <a href='./currentdata'><button className='btn btn-secondary'>Enter Current Data</button></a> 
                 </div>
-            </div>
-            ):(
+                <div  className='w-100 mt-3 px-2'>     
+                    <IconUserNav />
+                </div> 
+           </div>
+            ): currentUser ? (
                 // add code to navigate to create userData Form
                 <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
                     <h4 id='greet' className='fw-bold'>Let's get FIT!!</h4>
                     <div className='profile'>
-                        <img src='./profile-photo-icon.jpg' alt='profile pic'/><br />
+                        <img src={`${currentUser?.user.user_avatar_url}`} alt='profile pic'/><br />
                         <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
                         <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                     </div>
                     <h3> No User Details Yet!</h3>
-                    <div>
-                        <p> please insert information to keep track of your progress</p>
-                        { !addDisplay && currentUser ? <button className='btn btn-secondary mt-2 fw-bold' data-bs-toggle="modal" data-bs-target="#form-modal"> Add Workout </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-1'>-</button> : null}
-                        { currentUser ? <UserDataForm UserData = {currentUser} /> : null}
-
+                    <p>Please enter your details to keep track of your progress</p>
+                    <div>                            
                     </div>
-            
                 </div>
-            )
-        
-              
             ) : (
                 // code to navigate to login
                 <div>
@@ -97,7 +93,8 @@ const displayAddForm = () => {
                     }, 5000)}
                 </div>
             )}
-        </div>
+            </div>
+        </main>
     );
 };
 

@@ -3,6 +3,8 @@ const db = require('../models');
 
 const {UserData} = db
 
+
+
 UserDataRouter.post('/', async(req,res) => {
     try {
      // recieve user data from request body
@@ -57,7 +59,8 @@ UserDataRouter.put('/:id', async(req,res) =>{
         const {id} = req.params;
         
         // get updated data from the request body
-        const {data_current_date,
+        const {
+            data_current_date,
             data_current_weight,
             data_current_waist,
             data_current_chest,
@@ -66,11 +69,13 @@ UserDataRouter.put('/:id', async(req,res) =>{
             data_current_thighs,
             data_current_calves} =req.body;
         
-        //console.log(req.body)
         // find the userdata with a matching id
-    const userdata = await UserData.findByPk(id);
+    const userdata = await UserData.findOne({
+        where: {id: id}
+    });
         // update the userdata with new data
-    await userdata.update({ data_current_date,
+    await userdata.update({ 
+        data_current_date,
         data_current_weight,
         data_current_waist,
         data_current_chest,
@@ -82,7 +87,7 @@ UserDataRouter.put('/:id', async(req,res) =>{
         //send update user data as a response
     res.json(userdata)
         } catch (error) {
-            res.status(500).json({ message: 'An error occurred'});
+            res.status(500).json({ message: 'A funny error occurred'});
         }
 });
 

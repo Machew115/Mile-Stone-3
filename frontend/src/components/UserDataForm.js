@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 function UserDataForm(props) {
 
-    console.log(props)
+    console.log(props.date)
     // declare variables 
-    [dataDate, setDataDate] = useState('');
+    const date = new Date(props.date);
     [dataWeight, setDataWeight] = useState(0);
     [dataWaist, setDataWaist] = useState(0);
     [dataChest, setDataChest] = useState(0);
@@ -20,8 +20,8 @@ function UserDataForm(props) {
         // create new userData object
         const newUserData = {
         data_user_id: props.user.user_id,
-        data_start_date: dataDate,
-        data_current_date: dataDate,
+        data_start_date: date,
+        data_current_date: date,
         data_start_weight: dataWeight,
         data_current_weight: dataWeight,
         data_start_waist: dataWaist,
@@ -56,7 +56,7 @@ function UserDataForm(props) {
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '
-                                    type="number"
+                                    type="text"
                                     id="dataWeight"
                                     className="w-100 input_"
                                     onChange={(event) => setDataWeight(event.target.value)}
