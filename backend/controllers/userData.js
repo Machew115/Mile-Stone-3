@@ -1,7 +1,9 @@
 const UserDataRouter = require('express').Router()
 const db = require('../models');
 
+
 const {Userdata} = db
+
 
 
 UserDataRouter.post('/', async(req,res) => {
@@ -65,6 +67,7 @@ UserDataRouter.put('/:id', async(req,res) =>{
             data_current_biceps,
             data_current_thighs,
             data_current_calves} =req.body;
+
         // find the userdata with a matching id
         const userdata = await Userdata.findByPk(id)
         // update the userdata with new data
@@ -91,7 +94,9 @@ UserDataRouter.delete('/:id', async (req,res) => {
     const {id} = req.params;
         
         // find workout with a matching id
+
     const userdata = await Userdata.findByPk(id);
+
 
         // delete the workout
     await userdata.destroy();

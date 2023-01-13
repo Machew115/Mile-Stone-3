@@ -5,18 +5,18 @@ import IconUserNav from '../components/IconUserNav';
 import UserDataForm from '../components/UserDataForm'
 const Profile = () => {
     const {currentUser} =useContext(CurrentUser)   
-    console.log(currentUser)
-   
+ 
     return (
         <main className='w-100 mt-3 px-2'>
           <div>
+
             { currentUser && currentUser.userdata ? (
                 <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
                     <h4 id='greet' className='fw-bold'>{`Let's get FIT!!`}</h4>
                     <div className='profile'>
                         <div>
-                            <img src='./profile-photo-icon.jpg' alt='profile pic'/>
+                            <img src={currentUser.user.user_avatar_url} alt='profile pic'/>
                             <br />
 
                             <p><b>{currentUser?.user.user_f_name} {currentUser?.user.user_l_name}</b></p>
@@ -42,6 +42,7 @@ const Profile = () => {
                             </thead>
                             <tbody>
                                 <tr>
+
                                     <td>{currentUser?.userdata.data_start_date}</td>
                                     <td>{currentUser?.userdata.data_start_weight}</td>
                                     <td>{currentUser?.userdata.data_start_waist}</td>

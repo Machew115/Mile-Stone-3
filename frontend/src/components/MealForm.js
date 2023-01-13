@@ -10,6 +10,23 @@ function MealForm(props) {
     const date = new Date(props.selectedDate)
     date.setMinutes(30)
 
+    // responsive variables
+    const [viewportWidth, setViewPortWidth] = useState(window.innerWidth);
+    let timeout;
+
+    // Add an event listener for the 'resize' event on the window object
+    window.addEventListener('resize', () => {
+    // Clear any existing timeout
+    clearTimeout(timeout);
+
+    // Set a new timeout to run the function after a short delay
+    timeout = setTimeout(() => {
+        // Get the current viewport width
+        setViewPortWidth(window.innerWidth)
+    }, 250); // The function will run 250ms after the user finishes resizing the window
+    });
+
+
     // Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -38,14 +55,14 @@ function MealForm(props) {
 
     return (
         <div className="modal fade w-100 position-absolute top-50 start-50 translate-middle" id="form-modal" tabIndex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-            <div className="modal-dialog w-50">
+            <div className={ viewportWidth >= 720 ? "modal-dialog w-50 d-flex m-auto justify-content-center" : "modal-dialog w-75 d-flex m-auto justify-content-center"}>
                 <div className="modal-content w-100">
                 <div className="modal-header">
                     <h2 className="modal-title fs-5 fw-bold" id="formModalLabel">New Meal</h2>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body w-100">
-                    <form className="add-form w-50" onSubmit={handleSubmit}>
+                    <form className={ viewportWidth >= 720 ? "add-form w-50" : viewportWidth >= 480 ? "add-form w-75" : "add-form w-100"} onSubmit={handleSubmit}>
                         <div className='w-100 input-hold'>
                             <input
                                 placeholder=' '
