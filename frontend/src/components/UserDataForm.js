@@ -41,6 +41,7 @@ console.log(props.user_id)
         <div className="modal-body w-100">
                         <form className="add-form w-50" onSubmit={handleSubmit}>
                             <div className='w-100 input-hold'>
+                                <label className="fw-bold _label" htmlFor="data_start_weight">CurrentWeight (lb):</label>
                                 <input
                                     placeholder=' '
                                     type="number"
@@ -49,7 +50,6 @@ console.log(props.user_id)
                                     className="w-100 input_"
                                     onChange={e => setNewUserData({...newUserData,data_start_weight:e.target.value})}
                                 />
-                                <label className="fw-bold _label" htmlFor="data_start_weight">CurrentWeight (lb):</label>
                             </div>
                             <br />
                             <div className='w-100 input-hold'>

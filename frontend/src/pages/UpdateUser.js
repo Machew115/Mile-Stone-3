@@ -53,6 +53,7 @@ function UpdateUser() {
                 value={Weight}
                 onChange={(event) => setWeight(event.target.value)}
             />
+            <label className="fw-bold _label" htmlFor="data_start_weight">CurrentWeight (lb):</label>
         </li>
         <li className='list-group-item w-100 text-nowrap'>
             <input
@@ -62,6 +63,7 @@ function UpdateUser() {
                 value={Waist}
                 onChange={(event) => setWaist((event.target.value))}
             />
+            <label className="fw-bold _label" htmlFor="data_start_waist">Current Waist (cm):</label>
         </li>
         <li className='list-group-item w-100 text-nowrap'>
             <input
@@ -71,6 +73,7 @@ function UpdateUser() {
                 value={Chest}
                 onChange={(event) => setChest((event.target.value))}
             />
+            <label className="fw-bold _label" htmlFor="data_start_chest">Chest size (cm):</label>
         </li>
         <li className='list-group-item w-100 text-nowrap'>
             <input
@@ -80,6 +83,7 @@ function UpdateUser() {
                 value={Shoulders}
                 onChange={(event) => setShoulders((event.target.value))}
             />
+            <label className="fw-bold _label" htmlFor="data_start_shoulders">Shoulder size (cm):</label>
         </li>
         <li className='list-group-item w-100 text-nowrap'>
             <input
@@ -89,6 +93,7 @@ function UpdateUser() {
                 value={Biceps}
                 onChange={(event) => setBiceps(event.target.value)}
             />
+            <label className="fw-bold _label" htmlFor="data_start_biceps">Bicep size (cm):</label>
         </li>
         <li className='list-group-item w-100 text-nowrap'>
             <input
@@ -98,6 +103,7 @@ function UpdateUser() {
                 value={Thighs}
                 onChange={(event) => setThighs(event.target.value)}
             />
+            <label className="fw-bold _label" htmlFor="data_start_thighs">Thigh size (cm):</label>
         </li>
         <li className='list-group-item w-100 text-nowrap'>
             <input
@@ -107,6 +113,7 @@ function UpdateUser() {
                 value={Calves}
                 onChange={(event) => setCalves(event.target.value)}
             />
+            <label className="fw-bold _label" htmlFor="data_start_calves">Calve size (cm):</label>
         </li>
     </ul>
     <button onClick={handleSubmit} className='btn btn-secondary fw-bold' id='save-btn'>Save</button>
