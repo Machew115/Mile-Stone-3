@@ -20,6 +20,7 @@ const Home = () => {
     return (
         <main className='w-100 mt-3 px-2'>
             <h1 className='fw-bold p-2'> Stay On Track With FitTrack!</h1>
+
             <IconUserNav/>
             
             <div className={ viewportWidth >= 720 ? 'add-form w-50 mt-4' : 'add-form w-100 mt-4'}>

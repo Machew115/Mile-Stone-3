@@ -265,7 +265,6 @@ body {
         }
 
     }
-
     .btn-secondary {
         border: none;
         background-color: #dadada;
@@ -382,6 +381,7 @@ body {
         h1{
             text-align: center;
 
+
             margin-top: 20px;
 
             @media (max-width: 720px) {
@@ -395,6 +395,7 @@ body {
             @media (max-width: 370px) {
                 font-size: 18px; // font size for viewports <= 370px
             }
+
 
         }
 
@@ -417,6 +418,7 @@ body {
              
             h2 {
                 text-align: center;
+
 
                 @media (max-width: 720px) {
                     font-size: 18px; // font size for viewports <= 720px

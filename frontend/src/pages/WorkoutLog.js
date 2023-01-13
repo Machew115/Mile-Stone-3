@@ -72,6 +72,7 @@ function WorkoutLog() {
     }
 
     return (
+
         <div id="meal-log" className='w-100 px-2 mt-3'>
             {/* Date picker to allow the user to select the date */}
             { currentUser ? <input className="px-2 fw-bold" type="date" value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)} /> : null}
@@ -101,6 +102,7 @@ function WorkoutLog() {
                     {editingWorkoutId === workout.workout_id && display ? <WorkoutEdit workout={workout} /> : null}
                 </div>
             ))}
+
             { !addDisplay && currentUser ? <button className='btn btn-secondary mt-4 fw-bold' data-bs-toggle="modal" data-bs-target="#form-modal"> Add Workout </button>: currentUser ? <button onClick={() => displayAddForm()} className='btn btn-secondary mt-4'>-</button> : null}
             { currentUser ? <WorkoutForm user_id = {currentUser.user.user_id} selectedDate = {selectedDate}/> : null}
         </div>

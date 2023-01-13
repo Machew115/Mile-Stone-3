@@ -62,7 +62,9 @@ function WorkoutForm(props) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body w-100">
+
                         <form className={ viewportWidth >= 720 ? "add-form w-50" : viewportWidth >= 480 ? "add-form w-75" : "add-form w-100"} onSubmit={handleSubmit}>
+
                             <div className='w-100 input-hold'>
                                 <input
                                     placeholder=' '

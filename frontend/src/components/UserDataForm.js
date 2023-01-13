@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
 
-function UserDataForm() {
-    // refactored the useState for the variables
+import React, { useState } from 'react';
+
+function UserDataForm(props) {
+console.log(props.user_id)
+    // declare variables 
     const [newUserData,setNewUserData] = useState({
-        data_user_id: 8,
-        data_start_date: null,
-        data_current_date: null,
+        data_user_id: props.user_id,
+
         data_start_weight: null,
         data_current_weight: null,
         data_start_waist: null,
@@ -20,20 +21,24 @@ function UserDataForm() {
         data_current_thighs: null,
         data_start_calves: null,
         data_current_calves: null,
-        id:null
         });
+
     //Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(newUserData)
+
         //send the new userdata object to the server
-        fetch('http://localhost:5000/addData', {
+        fetch(`http://localhost:5000/userData`, {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUserData),
     });
 
     // reload the page after
+
+    window.location.reload()
+
 
     }
 

@@ -3,7 +3,7 @@ const auth = require ('express').Router()
 const db = require('../models')
 const bcrypt = require('bcrypt')
 const jwt = require('json-web-token')
-const {Users, UserData} = db
+const {Users, Userdata} = db
 
 
 auth.post('/', async (req, res) => {
@@ -41,7 +41,7 @@ auth.get('/profile', async (req, res) => {
                 where:{user_id:id}
                 }
             )
-            let userdata= await UserData.findOne({
+            let userdata= await Userdata.findOne({
                 where:{data_user_id:id}
                 }
             )

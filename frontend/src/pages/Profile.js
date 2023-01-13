@@ -2,12 +2,14 @@ import React, {useContext} from 'react';
 import { CurrentUser } from '../context/CurrentUser';
 import LogoutProfile from '../components/LogoutProfile';
 import IconUserNav from '../components/IconUserNav';
-
+import UserDataForm from '../components/UserDataForm'
 const Profile = () => {
     const {currentUser} =useContext(CurrentUser)   
-    const startDate= currentUser?.userdata.data_start_date.substr(0,10)
+ 
     return (
         <main className='w-100 mt-3 px-2'>
+          <div>
+
             { currentUser && currentUser.userdata ? (
                 <div>
                     <h1 id='greet' className='fw-bold'>Welcome, {currentUser?.user.user_f_name}!</h1>
@@ -40,7 +42,8 @@ const Profile = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{startDate}</td>
+
+                                    <td>{currentUser?.userdata.data_start_date}</td>
                                     <td>{currentUser?.userdata.data_start_weight}</td>
                                     <td>{currentUser?.userdata.data_start_waist}</td>
                                     <td>{currentUser?.userdata.data_start_chest}</td>
@@ -52,7 +55,7 @@ const Profile = () => {
                         </table>
                     </div>    
                 <div style={{textAlign:'center', marginBottom:'50px'}}>
-                    <a href={`./currentData`}><button className='btn btn-secondary'>Enter Current Measurements</button></a>
+                    <a href='./currentdata'><button className='btn btn-secondary'>Enter Current Data</button></a> 
                 </div>
                 <div  className='w-100 mt-3 px-2'>     
                     <IconUserNav />
@@ -69,9 +72,10 @@ const Profile = () => {
                         <p><b>USERID:{currentUser?.user.user_id}</b></p>    
                     </div>
                     <h3> No User Details Yet!</h3>
-                    <div style={{textAlign:'center', marginBottom:'50px'}}>
-                    <a href={`./newdata`}><button className='btn btn-secondary'>Enter Your Starting Measurements</button></a>
-                </div>
+                    <p>Please enter your details to keep track of your progress</p>
+                    <UserDataForm user_id={currentUser?.user.user_id} />
+                    <div>                            
+                    </div>
                 </div>
             ) : (
                 // code to navigate to login
@@ -85,6 +89,7 @@ const Profile = () => {
                     }, 5000)}
                 </div>
             )}
+            </div>
         </main>
     );
 };

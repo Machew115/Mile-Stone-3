@@ -279,6 +279,10 @@ body #greet {
   text-align: center;
   margin-top: 20px;
 }
+body #greet {
+  font-size: 18px;
+  text-align: center;
+}
 body .add-form {
   display: flex;
   flex-direction: column;
@@ -363,6 +367,26 @@ body .add-form .show-pw .sign-up:hover {
   color: #1cd4ff;
 }
 body main h1 {
+
+  text-align: center;
+}
+body main .links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+body main .links .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+body main .links .link:hover {
+  transform: scale(1.2);
+}
+body main .links h2 {
+
   text-align: center;
   margin-top: 20px;
 }

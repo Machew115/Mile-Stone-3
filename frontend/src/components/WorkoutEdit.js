@@ -48,6 +48,7 @@ function WorkoutEdit({ workout }) {
                     />
                 </li>
                 <li className='list-group-item w-100 text-nowrap px-1'>
+
                     <input
                         className='w-100'
                         type="text"

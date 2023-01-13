@@ -2,7 +2,7 @@ const userRouter = require('express').Router()
 const db = require('../models')
 const bcrypt =require('bcrypt')
 
-const {Users, UserData} = db
+const {Users, Userdata} = db
 
 userRouter.post('/', async(req,res)=>{
    let userCheck= await Users.findOne({
@@ -24,7 +24,8 @@ userRouter.post('/', async(req,res)=>{
 
 userRouter.get('/:id', async(req,res)=>{
     let userid= Number(req.params.id)
-    const userDetails = await UserData.findOne({
+    const userDetails = await Userdata.findOne({
+
         where: {data_user_id:userid}
     })
     res.json(userDetails)
@@ -41,15 +42,13 @@ userRouter.post('/newData', async(req,res)=>{
     }    
  })
 
-userRouter.post('/currentData', async(req,res)=>{
-    let userCheck= await UserData.findOne({
-         where: {data_user_id:req.body.user_id}
+userRouter.get('/:id', async(req,res)=>{
+    let userid= Number(req.params.id)
+    const userDetails = await Userdata.findOne({
+        where: {data_user_id:userid}
     })
-    if(userCheck){
-      // if the user exists - update the currentdata fields
-    } else {
-     //Send error message that the user does not exist  
-    }    
- })
+    
+    res.json(userDetails)
+})
 
 module.exports = userRouter
